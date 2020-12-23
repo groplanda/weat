@@ -1,0 +1,15 @@
+columns:
+    title:
+        label: Имя
+        type: text
+        searchable: true
+        sortable: true
+    email:
+        label: E-mail
+        type: text
+        searchable: true
+        sortable: true
+    rating:
+        label: Оценка
+        type: number
+        sortable: true

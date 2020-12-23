@@ -1,0 +1,60 @@
+description = "Header"
+
+[viewBag]
+
+[staticMenu]
+code = "header-menu"
+==
+<div class="wrapper">
+    <div class="header__wrapper">
+        <!--logo start-->
+        <div class="header__logo">
+            <a href="/" class="header__logo-link">
+                <img class="header__logo-pic" src="{{ 'assets/images/logo.png'|theme }}" alt="{{ this.theme.site_name }}">
+            </a>
+        </div>
+        <!--logo end-->
+        <!--navbar start-->
+        <div class="header__navigation">
+            <div class="header__contact">
+                <div class="header__contact-item">
+                    <a href="tel:{{ this.theme.phone }}">{{ this.theme.phone }}</a>
+                </div>
+                <div class="header__contact-item adress">
+                    <span>{{ this.theme.address }}</span>
+                </div>
+                <div class="header__contact-item email">
+                    <a href="mailto:{{ this.theme.t_email }}">{{ this.theme.t_email }}</a>
+                </div>
+            </div>
+            <nav class="nav">
+                <button id="mobile-menu" class="nav__mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                {% partial "app/menu-item" items=menuItems %}
+                <div class="nav__right">
+                    <!--cart start-->
+                    {% partial "app/mini-cart" %}
+                    <!--cart end-->
+                    <!--search start-->
+                    <div class="header__search">
+                        <a href="#!" id="open-search" class="header__search-icon">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <div class="header__search-wrapper">
+                            <form class="header__search-form" action="{{ 'search' | page }}" method="get">
+                                <fieldset class="header__search-row">
+                                    <input class="header__search-input" name="q" type="text" placeholder="поиск..." />
+                                    <button type="submit" class="header__search-btn"><i class="fas fa-search"></i></button>
+                                </fieldset>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--search end-->
+                </div>
+            </nav>
+        </div>
+        <!--navbar end-->
+    </div>
+</div>

@@ -1,0 +1,53 @@
+description = "Homepage"
+
+[Featured]
+featuredTitle = "Популярные товары"
+
+[slidelist]
+
+[advantagewidget]
+advantageName = 1
+
+[subscribeform]
+==
+<!DOCTYPE html>
+<html>
+    {% partial 'app/meta' %}
+    <body>
+        <!-- Header -->
+        <header class="header">
+            {% partial 'app/header' %}
+        </header>
+
+        <!-- Content -->
+        <main class="main">
+            {% component 'slidelist' %}
+
+            {% component 'Featured' %}
+
+            {% component 'advantagewidget' %}
+
+            <section class="about">
+                <div class="wrapper">
+                    <h3 class="about__title">{{ this.page.title }}</h3>
+                    <div class="about__content">
+                        {% page %}
+                    </div>
+                </div>
+            </section>
+
+            {% component 'subscribeform' %}
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            {% partial 'app/footer' %}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="{{ 'assets/dist/js/index.js'|theme }}"></script>
+        {% framework extras %}
+        {% scripts %}
+    </body>
+</html>

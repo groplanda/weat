@@ -1,0 +1,27 @@
+columns:
+    title:
+        label: Название
+        type: text
+        searchable: true
+        sortable: true
+    is_active:
+        label: Статус
+        type: switch
+        sortable: true
+    price:
+        label: Цена
+        type: text
+        searchable: true
+        sortable: true
+    categories:
+        label: Категории
+        type: text
+        searchable: true
+        sortable: true
+        select: title
+        relation: categories
+    sort_order:
+        label: Порядок
+        type: number
+        searchable: false
+        sortable: true

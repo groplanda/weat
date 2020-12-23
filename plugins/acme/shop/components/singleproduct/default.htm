@@ -1,0 +1,243 @@
+<div id="{{ __SELF__.id }}" class="product">
+  {% set image = product.gallery[0].path %}
+  <div class="product__wrapper">
+    <!--main image start-->
+    <div class="product__image">
+      <div id="zoom-pic" class="product__image-pic" style="background-image: url('{{ image }}')">
+        <img class="product__image-thumb animate__animated" src="{{ image }}" alt="{{ product.title }}">
+      </div>
+      <!--gallery start-->
+      <ul id="imageFilter" class="product__image-list">
+        {% for image in product.gallery %}
+        <li class="product__image-item {{ loop.first ? ' active' : '' }}"  data-color="{{ image.title|lower }}" data-article="{{ image.description }}">
+          <img class="product__image-item-thumb" src="{{ image.thumb(66, '99', { 'mode':'crop' }) }}" alt="{{ image.title }}" data-image="{{ image.path }}">
+        </li>
+        {% endfor %}
+      </ul>
+      <!--gallery end-->
+    </div>
+    <!--main image end-->
+
+    <!--product info start-->
+    <div class="product__info">
+
+      <div class="product__avarage">
+        <div class="product__avarage-block" style="width: {{ avg }}%">
+          <div class="product__avarage-block-fill"></div>
+        </div>
+      </div>
+
+      <h1 class="product__title">{{ product.title }}</h1>
+      <div class="product__content">
+        <!--product price start-->
+        <p class="product__price">
+          {% if product.sale_price %}
+            <span class="product__price-sale">{{ product.price }}</span> {{ product.sale_price }} <span class="product__price-current">₽</span>
+          {% else %}
+            {{ product.price }} <span class="product__price-current">₽</span>
+          {% endif %}
+        </p>
+        <!--product price end-->
+        <!--product article start-->
+        <p class="product__article">
+          Артикул: <span id="article"></span>
+        </p>
+        <!--product article end-->
+        <div class="product__description">
+          {{ product.description|raw }}
+        </div>
+
+        <!--product params start-->
+        {% if product.info %}
+        <div class="product__params">
+          {% for param in product.info %}
+          <div class="product__param">
+            <span class="product__param-type"><b>{{ param.type }}</b></span>
+            <span class="product__param-value">{{ param.value }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        <!--product params end-->
+        {% endif %}
+        {% if product.categories %}
+        <div class="product__categories">
+          <div class="product__categories-title"><b>Категории:</b></div>
+          <ul class="product__categories-list">
+            {% for category in product.categories %}
+            <li class="product__categories-item">
+              <a class="product__categories-link" href="{{ 'category'|page({ slug: category.slug }) }}">{{ category.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        <!--product option start-->
+        {% if product.options %}
+        <div class="product__options">
+          <!--product color start-->
+          <div class="product__color">
+            <div class="product__color-title"><b>Цвет:</b> <span id="color-title"></span></div>
+            <ul class="product__color-list">
+              {% for option in product.options %}
+              {% if option.type == 'color' %}
+              <li class="product__color-item">
+                <a href="#!" class="product__color-link" data-type="color" data-color="{{ option.title|lower }}">
+                <span style="background: {{ option.color }}">{{ option.title }}</span>
+                </a>
+              </li><!--color item-->
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+          <!--product color end-->
+          <!--product size start-->
+          <div class="product__size">
+            <div id="size-title" class="product__size-title">Выберите размер</div>
+            <div class="product__size-list">
+              <div class="product__size-list-header">
+                <button class="product__size-list-button show-size">
+                  Расчет размера по росту и весу
+                </button>
+                <div class="product__size-list-info">
+                  <span>Российский</span>
+                  <span>Международный</span>
+                </div>
+              </div>
+              <div class="product__size-table">
+              {% for option in product.options %}
+                {% if option.type == 'size' %}
+                  <div class="product__size-table-item" data-size="{{ option.title ~ ' ' ~ option.description }}">
+                    <span>{{ option.title }}</span><span>{{ option.description }}</span>
+                  </div><!--size item-->
+                {% endif %}
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+          <!--product size end-->
+        </div>
+        {% endif %}
+        <!--product option end-->
+
+        <div class="product__button">
+          <button
+            data-cart="add"
+            data-slug="{{ product.slug }}"
+            data-article="{{ product.gallery[0].description }}"
+            data-price="{{ product.sale_price ? product.sale_price : product.price }}"
+            data-image="{{ image }}"
+            data-title="{{ product.title }}"
+            data-id="{{ product.id }}"
+            data-count="1"
+            id="add-to-cart"
+            class="button add-to-cart">
+            Добавить в корзину
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <!--product info end-->
+  </div>
+
+  <div class="product__wrapper">
+    <div class="product__tabs">
+      <div class="product__tabs-header">
+        <ul class="product__tabs-header-list">
+          <li class="product__tabs-header-item button active" data-tab="comments">
+            <i class="fas fa-comment-dots"></i> Все отзывы
+          </li>
+          <li class="product__tabs-header-item button" data-tab="form">
+            <i class="fas fa-envelope"></i>Оставить отзыв
+          </li>
+        </ul>
+      </div>
+      <div class="product__tabs-body">
+        <div id="comments">
+          {% partial __SELF__ ~ '::comments.htm' comments = product.comments %}
+        </div>
+        <div id="form" style="display: none;">
+          {% partial __SELF__ ~ '::form.htm' %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="popup animate__animated size-popup">
+  <div class="popup-dialog">
+    <div class="popup-window">
+      <div class="popup-window__header">
+        <h4 class="popup-window__header-title">Таблица размеров VSЁoNEI</h4>
+        <button class="popup-window__header-close">&times;</button>
+      </div>
+      <div class="popup-window__body">
+        <div class="table__scroll">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Российский размер</th>
+                <th scope="col">Международный размер</th>
+                <th scope="col">Обхват груди, в см</th>
+                <th scope="col">Обхват талии, в см</th>
+                <th scope="col">Обхват бедер, в см</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>36</td>
+                <td>42 XS</td>
+                <td>82-86</td>
+                <td>62-66</td>
+                <td>90-94</td>
+              </tr>
+              <tr>
+                <td>38</td>
+                <td>44 S</td>
+                <td>86-90</td>
+                <td>66-70</td>
+                <td>94-98</td>
+              </tr>
+              <tr>
+                <td>40</td>
+                <td>46 M</td>
+                <td>90-94</td>
+                <td>70-74</td>
+                <td>98-102</td>
+              </tr>
+              <tr>
+                <td>42</td>
+                <td>48 L</td>
+                <td>94-98</td>
+                <td>74-78</td>
+                <td>102-106</td>
+              </tr>
+              <tr>
+                <td>44</td>
+                <td>50 XL</td>
+                <td>98-102</td>
+                <td>78-82</td>
+                <td>106-110</td>
+              </tr>
+              <tr>
+                <td>46</td>
+                <td>52 XXL</td>
+                <td>102-106</td>
+                <td>82-86</td>
+                <td>110-114</td>
+              </tr>
+              <tr>
+                <td>48</td>
+                <td>54 3XL</td>
+                <td>106-110</td>
+                <td>86-90</td>
+                <td>114-118</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

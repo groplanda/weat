@@ -1,0 +1,14 @@
+    {% set results = __SELF__.results %}
+    <span data-type="search" class="search-query">по {{ query }}</span>
+    <div class="products__wrapper">
+    {% for result in results %}
+        {# Display all results #}
+        {% partial __SELF__ ~ '::content.htm' result = result %}
+    {% else %}
+        {# No results found #}
+        {% partial __SELF__ ~ '::no-results.htm' %}
+    {% endfor %}
+    </div>
+    <div class="pagination">
+        {% partial __SELF__ ~ '::pagination.htm' results = results %}
+    </div>

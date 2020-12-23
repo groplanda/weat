@@ -1,0 +1,11 @@
+description = "Menu items"
+
+[viewBag]
+==
+<ul class="nav-list" data-menu="header">
+  {% for item in items %}
+  <li class="nav-item">
+      <a href="{{ item.url }}" class="nav-link{{ item.isActive or item.isChildActive ? ' active' : '' }}">{{ item.title }}</a>
+  </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,24 @@
+items:
+    -
+        title: 'О нас'
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: about
+        replace: 0
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'О бренде'
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: o-brende
+        replace: 0
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: 'Нижнее меню'

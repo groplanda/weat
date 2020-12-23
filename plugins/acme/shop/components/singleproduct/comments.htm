@@ -1,0 +1,26 @@
+<ul class="comment-list">
+  {% if commentCount == 0 %}
+  <p>Опубликованных отзывов пока нет, напишите отзыв первым!</p>
+  {% else %}
+  {% for comment in comments if comment.status %}
+  <li class="comment-item">
+    <div class="comment-item__rating">
+      {% for i in 1..5 %}
+        <i class="fas fa-star{{ i <= comment.rating ? ' active' : '' }}"></i>
+      {% endfor %}
+    </div>
+    <div class="comment-item__info">
+      <div class="comment-item__info-header">
+        <span class="comment-item__info-name">{{ comment.title }}</span>
+        <span class="comment-item__info-time"><i class="far fa-clock"></i> {{ comment.created_at|date('d F Y') }}</span>
+      </div>
+      <div class="comment-item__info-body">
+        <p class="comment-item__info-body-description">
+          {{ comment.description }}
+        </p>
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+  {% endif %}
+</ul>

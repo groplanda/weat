@@ -1,0 +1,60 @@
+<!--select box sort start-->
+<div class="products__filter-selectbox">
+  <div class="products__filter-selectbox-title" data-filter="sort">По умолчанию</div>
+  <div class="products__filter-dropdown dropdown">
+      {% for code, option in sortOptions %}
+      <div class="products__filter-item">
+          <input type="radio" class="sort__filter" name="filter[sort]" id="sort-{{ loop.index }}" value="{{ code }}" {{ code == 'sort_order asc' ? 'checked' : '' }} />
+          <label for="sort-{{ loop.index }}">{{ option }}</label>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+<!--select box sort end-->
+
+<!--select box color start-->
+<div class="products__filter-selectbox">
+  <div class="products__filter-selectbox-title" data-filter="color">Цвет</div>
+  <div class="products__filter-dropdown dropdown">
+      {% for color in colors %}
+      <div class="products__filter-item">
+          <input type="checkbox" class="color__filter check-styles" name="filter[colors][]" id="color-{{ color.id }}" value="{{ color.id }}" />
+          <span class="products__filter-item-color" style="background: {{ color.color }}"></span>
+          <label for="color-{{ color.id }}">{{ color.title }}</label>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+<!--select box color end-->
+
+<!--select box size start-->
+<div class="products__filter-selectbox">
+  <div class="products__filter-selectbox-title" data-filter="size">Размер</div>
+  <div class="products__filter-dropdown dropdown">
+      {% for size in sizes %}
+      <div class="products__filter-item">
+          <input type="checkbox" class="size__filter check-styles" name="filter[sizes][]" id="size-{{ size.id }}" value="{{ size.id }}" />
+          <label for="size-{{ size.id }}">{{ size.title }} - {{ size.description }}</label>
+      </div>
+      {% endfor %}
+
+  </div>
+</div>
+<!--select box size end-->
+
+<!--range slider start-->
+<div class="products__filter-range">
+  <div class="range-slider" data-filter="price" data-min="{{ minPrice }}" data-max="{{ maxPrice }}"></div>
+  <div class="products__filter-range-output">
+    Цена:&nbsp;
+    <span class="products__filter-range-output-start" data-price="start"></span>
+    <span class="products__filter-range-output-end" data-price="end"></span>
+    &nbsp;₽
+  </div>
+</div>
+
+<!--range slider end-->
+
+<!--button filter start-->
+<button class="button dark" data-type="button-filter">Фильтр</button>
+<!--button filter end-->

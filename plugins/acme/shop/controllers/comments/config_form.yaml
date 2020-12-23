@@ -1,0 +1,10 @@
+name: Comments
+form: $/acme/shop/models/comment/fields.yaml
+modelClass: Acme\Shop\Models\Comment
+defaultRedirect: acme/shop/comments
+create:
+    redirect: 'acme/shop/comments/update/:id'
+    redirectClose: acme/shop/comments
+update:
+    redirect: acme/shop/comments
+    redirectClose: acme/shop/comments

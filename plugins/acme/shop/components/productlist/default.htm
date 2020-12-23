@@ -1,0 +1,33 @@
+<div class="products">
+    <h1 class="products__title">{{ this.page.title }}</h1>
+
+    <div class="mobile products__mobile-filter">
+        <button class="button dark" data-modal="filter"><i class="fas fa-sliders-h"></i>&nbsp;Фильтр</button>
+    </div>
+
+    <div id="partialFilter" class="products__filter">
+        {% partial "ProductList::filter" %}
+    </div>
+
+    <div id="partialProducts" class="products__wrapper">
+        {% partial "ProductList::list" %}
+    </div>
+    <div id="partialPaginate" class="pagination">
+        {% partial "ProductList::pagination" %}
+    </div>
+</div>
+
+<div class="popup animate__animated filter-popup">
+    <div class="popup-dialog">
+      <div class="popup-window">
+        <div class="popup-window__header">
+          <h4 class="popup-window__header-title">Фильтр</h4>
+          <button class="popup-window__header-close">&times;</button>
+        </div>
+        <div id="modal-filter" class="popup-window__body">
+
+        </div>
+      </div>
+    </div>
+  </div>
+

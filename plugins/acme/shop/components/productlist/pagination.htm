@@ -1,0 +1,87 @@
+
+{% if pages > 1 %}
+{% set leftLimit = 2 %}
+{% set rightLimit = 3 %}
+    <ul class="pagination__list">
+        {% if currentPage != 1 %}
+            <li class="pagination__item">
+                <a class="prev click-page" data-page="{{ currentPage - 1 }}"></a>
+            </li>
+        {% endif %}
+
+        {% if pages < leftLimit + rightLimit + 2 %}
+
+        {% for i in 1..pages %}
+            <li class="pagination__item">
+                <a data-page="{{ i }}" class="click-page {{ currentPage == i ? 'active' : '' }}">
+                    {{ i }}
+                </a>
+            </li>
+        {% endfor %}
+
+        {% else %}
+
+        {% if currentPage > leftLimit and currentPage < (pages - rightLimit) %}
+
+        {% set i = currentPage - leftLimit %}
+            {% if currentPage > 3 %}
+            <li class="pagination__item">
+                <a>...</a>
+            </li>
+            {% endif %}
+        {% for i in i..(currentPage + rightLimit) %}
+            <li class="pagination__item">
+                <a data-page="{{ i }}" class="click-page {{ currentPage == i ? 'active' : '' }}">
+                    {{ i }}
+                </a>
+            </li>
+        {% endfor %}
+            <li class="pagination__item">
+                <a>...</a>
+            </li>
+        {% elseif currentPage <= leftLimit%}
+
+        {% set iSlice = 1 + leftLimit - currentPage %}
+
+        {% for i in 1..(currentPage + (rightLimit + iSlice)) %}
+            <li class="pagination__item">
+                <a data-page="{{ i }}" class="click-page {{ currentPage == i ? 'active' : '' }}">
+                    {{ i }}
+                </a>
+            </li>
+        {% endfor %}
+            <li class="pagination__item">
+                <a>...</a>
+            </li>
+            <li>
+                <a data-page="{{ pages }}" class="click-page">
+                    {{ pages }}
+                </a>
+            </li>
+        {% else %}
+
+        {% set iSlice = rightLimit - (pages - currentPage) %}
+
+        {% set i = currentPage - (leftLimit + iSlice) %}
+
+            <li class="pagination__item">
+                <a>...</a>
+            </li>
+        {% for i in i..pages %}
+            <li class="pagination__item">
+                <a data-page="{{ i }}" class="click-page {{ currentPage == i ? 'active' : '' }}">
+                    {{ i }}
+                </a>
+            </li>
+        {% endfor %}
+
+        {% endif %}
+
+        {% endif %}
+
+        {% if pages != currentPage %}
+            <li class="pagination__item"><a class="next click-page"  data-page="{{ currentPage + 1 }}"></a></li>
+        {% endif %}
+
+    </ul>
+{% endif %}

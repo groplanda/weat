@@ -1,0 +1,23 @@
+fields:
+    title:
+        label: Название
+        span: left
+        type: text
+    slug:
+        label: 'Url слаг'
+        span: right
+        preset:
+            field: title
+            type: slug
+        type: text
+    image:
+        label: Фото
+        mode: image
+        imageWidth: '150'
+        imageHeight: '150'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload

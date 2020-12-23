@@ -1,0 +1,35 @@
+<form
+  id="{{ __SELF__.id }}"
+  class="feedback-form form"
+  data-request="{{ __SELF__ }}::onSend"
+  data-request-validate
+  data-request-flash
+  >
+    <div class="form__wrapper">
+      <input type="text" name="user_name" class="form__input" placeholder="Ваше имя*" />
+      <span class="text-danger validate" data-validate-for="user_name"></span>
+    </div>
+    <div class="form__wrapper">
+      <input type="tel" name="user_phone" class="form__input" placeholder="Ваш телефон*" />
+      <span class="text-danger validate" data-validate-for="user_phone"></span>
+    </div>
+    <div class="form__wrapper">
+      <input type="text" name="user_mail" class="form__input" placeholder="Ваш email" />
+      <span class="text-danger validate" data-validate-for="user_mail"></span>
+    </div>
+    <div class="form__wrapper">
+      <textarea name="user_message"class="form__input huge" placeholder="Ваше сообщение"></textarea>
+    </div>
+    <div class="subscriber__form-row confirm form__wrapper">
+      <input type="checkbox" name="confirm-subscribe" id="confirm-subscribe" class="confirm__input">
+      <label for="confirm-subscribe" class="confirm__label">Согласен с <a href="{{ 'privacy'|staticPage }}" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a></label>
+    </div>
+    <div class="form__wrapper">
+      <button type="submit" disabled="disabled" class="button" data-attach-loading>Отправить</button>
+    </div>
+    {% flash %}
+    <div class="alert alert-{{ type }}" data-interval="4">
+        {{ message }}
+    </div>
+    {% endflash %}
+</form>

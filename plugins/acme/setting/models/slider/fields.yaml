@@ -1,0 +1,32 @@
+fields:
+    title:
+        label: Заголовок
+        span: auto
+        type: text
+    link:
+        label: Ссылка
+        span: auto
+        type: text
+    description:
+        label: Описание
+        size: small
+        span: full
+        type: textarea
+    image:
+        label: Фото
+        mode: image
+        imageWidth: '150'
+        imageHeight: '150'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    color:
+        label: 'Цвет фона'
+        availableColors:
+            - '#FFF'
+            - '#F4F4F4F'
+        span: auto
+        type: colorpicker

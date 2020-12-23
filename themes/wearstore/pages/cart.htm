@@ -1,0 +1,30 @@
+title = "Корзина"
+url = "/cart"
+layout = "shop"
+is_hidden = 0
+==
+<form data-cart="big-cart">
+    <div class="shop__cart">
+      <table class="table shop__table">
+        <thead class="shop__table-title">
+          <tr>
+            <th scope="col">Товар</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Кол-во</th>
+            <th scope="col">Итого</th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody data-items="table"></tbody>
+      </table>
+    </div>
+    <div class="shop__cart-footer buttons" data-buttons="true">
+      <button type="submit" class="button">Обновить</button>
+      <div class="shop__cart-footer-result">
+        <div class="shop__cart-footer-total">
+          <p class="total-sum">Сумма: <span data-sum="total"></span>₽</p>
+        </div>
+        <a href="{{ 'checkout'|page }}" class="button">Оформить заказ</a></div>
+      </div>
+    </div>
+</form>

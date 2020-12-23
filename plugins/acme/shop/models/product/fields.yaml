@@ -1,0 +1,92 @@
+fields:
+    title:
+        label: Заголовок
+        span: auto
+        required: 1
+        type: text
+    slug:
+        label: Слаг
+        span: auto
+        required: 1
+        preset:
+            field: title
+            type: slug
+        type: text
+    is_active:
+        label: 'Показать?'
+        span: auto
+        type: switch
+    is_featured:
+        label: 'Популярный?'
+        span: auto
+        type: switch
+    price:
+        label: Цена
+        span: auto
+        default: '0'
+        type: number
+    sale_price:
+        label: 'Цена по скидке'
+        span: auto
+        type: number
+tabs:
+    fields:
+        description:
+            label: Описание
+            size: huge
+            span: full
+            type: richeditor
+            tab: Описание
+        info:
+            label: Характеристики
+            prompt: Добавить
+            span: full
+            type: repeater
+            tab: Описание
+            form:
+                fields:
+                    type:
+                        label: Название
+                        span: auto
+                        type: text
+                    value:
+                        label: Описание
+                        span: auto
+                        type: text
+        gallery:
+            label: Галерея
+            mode: image
+            prompt: Добавить
+            imageWidth: '150'
+            imageHeight: '150'
+            fileTypes: 'jpg,png,jpeg'
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: full
+            type: fileupload
+            tab: Фото
+        meta_title:
+            label: 'Мета title'
+            span: full
+            type: text
+            tab: 'СЕО настройки'
+        meta_description:
+            label: 'Мета описание'
+            size: small
+            span: full
+            type: textarea
+            tab: 'СЕО настройки'
+        categories:
+            label: Категории
+            nameFrom: title
+            descriptionFrom: description
+            span: auto
+            type: relation
+            tab: Категории
+        options:
+            span: auto
+            path: field_options
+            type: partial
+            tab: Опции

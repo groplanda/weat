@@ -1,0 +1,24 @@
+plugin:
+    name: 'acme.setting::lang.plugin.name'
+    description: 'acme.setting::lang.plugin.description'
+    author: Acme
+    icon: oc-icon-cog
+    homepage: ''
+navigation:
+    main-menu-settings:
+        label: Настройки
+        url: acme/setting/sliders
+        icon: icon-cogs
+        sideMenu:
+            side-menu-slider:
+                label: Слайдер
+                url: acme/setting/sliders
+                icon: icon-sliders
+            side-menu-advantages:
+                label: Преимущества
+                url: acme/setting/advantages
+                icon: icon-star
+            side-menu-faq:
+                label: FAQ
+                url: acme/setting/answers
+                icon: icon-question-circle

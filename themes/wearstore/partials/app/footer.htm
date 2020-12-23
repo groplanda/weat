@@ -1,0 +1,126 @@
+description = "Footer"
+
+[viewBag]
+
+[staticMenu]
+code = "footer-menu"
+==
+<?php
+use Acme\Shop\Models\Category;
+
+function onStart()
+{
+  $this['categories'] = Category::orderBy('sort_order', 'asc')->get();
+}
+?>
+==
+<div class="wrapper">
+  <div class="footer__wrapper">
+      <!--menu-->
+      <div class="footer__menu">
+          <h4 class="footer__title">Каталог</h4>
+          <ul class="footer-list">
+              {% for category in categories %}
+              <li class="footer-item">
+                  <a href="{{ 'category' | page({ slug: category.slug }) }}" class="footer-link">{{ category.title }}</a>
+              </li>
+              {% endfor %}
+          </ul>
+      </div>
+      <!--menu end-->
+      <!--menu-->
+      <div class="footer__menu">
+          <h4 class="footer__title">VSЁoNEI</h4>
+          {% partial "app/footer-item" items=menuItems %}
+      </div>
+      <!--menu end-->
+      <!--menu-->
+      <div class="footer__menu">
+          <h4 class="footer__title">Информация</h4>
+          <ul class="footer-list">
+              <li class="footer-item">
+                  <a href="{{ 'pay'|staticPage }}" class="footer-link">Оплата</a>
+              </li>
+              <li class="footer-item">
+                  <a href="{{ 'delivery'|staticPage }}" class="footer-link">Доставка</a>
+              </li>
+              <li class="footer-item">
+                  <a href="/table" class="footer-link">Таблица размеров</a>
+              </li>
+              <li class="footer-item">
+                  <a href="{{ 'privacy'|staticPage }}" class="footer-link">Политика конфиденциальности</a>
+              </li>
+              <li class="footer-item">
+                  <a href="{{ 'faq'|page }}" class="footer-link">Часто задаваемые вопросы</a>
+              </li>
+              <li class="footer-item">
+                  <a href="{{ 'contact'|page }}" class="footer-link">Контакты</a>
+              </li>
+              <li class="footer-item">
+                  <a href="{{ 'feedback'|page }}" class="footer-link">Обратная связь</a>
+              </li>
+          </ul>
+      </div>
+      <!--menu end-->
+      <div class="footer__payment">
+          <h4 class="footer__title">Способы оплаты</h4>
+          <ul class="footer__paylist">
+              <li class="footer__paylist-item"><img class="footer__paylist-pic" src="{{ 'assets/images/icon/yandex.png'|theme }}" alt="Yandex Kassa"></li>
+          </ul>
+      </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="footer__wrapper">
+      <div class="footer__contact">
+          <div class="footer__contact-item">
+              <a href="tel:{{ this.theme.phone }}">{{ this.theme.phone }}</a>
+          </div>
+          <div class="footer__contact-item adress">
+              <span>{{ this.theme.address }}</span>
+          </div>
+          <div class="footer__contact-item email">
+              <a href="mailto:{{ this.theme.t_email }}">{{ this.theme.t_email }}</a>
+          </div>
+      </div>
+      <div class="footer__social">
+            <ul class="social-list">
+                {% if this.theme.vk %}
+                <li class="social-item">
+                    <a rel="nofollow" target="_blank" href="{{ this.theme.vk }}" class="social-link">
+                      <i class="fab fa-vk"></i>
+                    </a>
+                </li>
+                {% endif %}
+                {% if this.theme.instagram %}
+                <li class="social-item">
+                    <a rel="nofollow" target="_blank" href="{{ this.theme.instagram }}" title="Instagram" class="social-link">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                {% endif %}
+                {% if this.theme.youtube %}
+                <li class="social-item">
+                    <a rel="nofollow" target="_blank" href="{{ this.theme.youtube }}" title="Youtube" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </li>
+                {% endif %}
+                {% if this.theme.whatsapp %}
+                <li class="social-item">
+                    <a href="whatsapp://send?phone=+{{ this.theme.whatsapp }}" title="WhatsApp" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </li>
+                {% endif %}
+                {% if this.theme.viber %}
+                <li class="social-item">
+                    <a href="viber://add?number={{ this.theme.viber }}" title="Viber" class="social-link">
+                        <i class="fab fa-viber"></i>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+      </div>
+  </div>
+</div>

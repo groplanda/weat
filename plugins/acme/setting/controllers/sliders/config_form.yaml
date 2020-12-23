@@ -1,0 +1,10 @@
+name: Sliders
+form: $/acme/setting/models/slider/fields.yaml
+modelClass: Acme\Setting\Models\Slider
+defaultRedirect: acme/setting/sliders
+create:
+    redirect: 'acme/setting/sliders/update/:id'
+    redirectClose: acme/setting/sliders
+update:
+    redirect: acme/setting/sliders
+    redirectClose: acme/setting/sliders

@@ -1,0 +1,21 @@
+{% set image = result.model.gallery[0] %}
+<div class="products__item">
+    <a class="products__item-link" href="{{ result.url }}">
+        <div class="products__item-pic">
+            <img src="{{ image.thumb(280, 380, { mode: 'crop', quality: '80' }) }}" class="products__item-thumb" alt="{{ result.title }}">
+            {% if result.model.sale_price %}
+                <span class="products__item-sale">-{{  100 - ((result.model.sale_price / result.model.price ) * 100) |round }}%</span>
+            {% endif %}
+        </div>
+        <div class="products__info">
+            <h5 class="products__info-title">{{ result.title }}</h5>
+            <p class="products__price">
+                {% if result.model.sale_price %}
+                  <span class="products__price-sale">{{ result.model.price }}</span> | {{ result.model.sale_price }} <span class="producst__price-current">₽</span>
+                {% else %}
+                  {{ result.model.price }} <span class="products__price-current">₽</span>
+                {% endif %}
+            </p>
+        </div>
+    </a>
+</div><!--item-->

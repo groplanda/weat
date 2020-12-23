@@ -1,0 +1,73 @@
+<section id="{{ __SELF__.id }}" class="featured">
+    <div class="wrapper">
+        <div class="featured__header">
+            <h3 class="featured__title">{{ featuredTitle }}</h3>
+            <div class="featured__arrows">
+                <div class="featured__arrow prev">
+                    <i class="fas fa-long-arrow-alt-left"></i>
+                </div>
+                <div class="featured__arrow next">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="featured__wrapper">
+            <div class="swiper-featured swiper-container">
+                <div class="swiper-wrapper">
+                    {% if featured %}
+                    {% for product in featured %}
+                    {% set image = product.gallery[0] %}
+                    <!--product start-->
+                    <div class="swiper-slide">
+                        <div class="featured__product">
+                            <a href="{{ 'single-product'|page({ slug: product.slug }) }}" class="featured__product-link">
+                                <div class="featured__product-pic">
+                                    <img
+                                        src="{{ image.thumb(350, 480, { mode: 'crop', quality: '80' }) }}"
+                                        class="featured__product-thumb"
+                                        alt="{{ product.title }}"
+                                    />
+                                    <ul class="featured__product-tags">
+                                        <li class="featured__product-single-tag sale">
+                                            -{{  100 - ((product.sale_price / product.price ) * 100) |round }}%
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="featured__product-info">
+                                    {% if product.sale_price %}
+                                        <span class="featured__product-price">
+                                            <span class="featured__price-sale">{{ product.price }}</span>
+                                            {{ product.sale_price }} <span class="current">₽</span>
+                                        </span>
+                                    {% else %}
+                                        <span class="featured__product-price">
+                                            {{ product.price }} <span class="current">₽</span>
+                                        </span>
+                                    {% endif %}
+                                    <div class="featured__product-title">
+                                        {{ product.title }}
+                                        {% for category in product.categories %}
+                                        <span>/ {{ category.title }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="featured__size">
+                                        {% for option in product.options %}
+                                            {% if option.type == 'size' %}
+                                                <span>{{ option.title }}</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--product end-->
+                    {% endfor %}
+                    {% else %}
+                        <p class="center">Таких товаров пока нет!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

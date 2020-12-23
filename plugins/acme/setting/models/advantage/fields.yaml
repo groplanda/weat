@@ -1,0 +1,29 @@
+fields:
+    title:
+        label: Название
+        span: full
+        type: text
+    advantages:
+        label: Преимущества
+        prompt: 'Добавить преимущество'
+        span: full
+        maxItems: '9'
+        type: repeater
+        form:
+            fields:
+                name:
+                    label: Название
+                    span: auto
+                    type: text
+                description:
+                    label: Описание
+                    size: ''
+                    span: auto
+                    type: textarea
+                ico:
+                    label: Иконка
+                    mode: image
+                    imageWidth: '75'
+                    imageHeight: '75'
+                    span: auto
+                    type: mediafinder

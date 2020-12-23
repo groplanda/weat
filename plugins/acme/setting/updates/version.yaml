@@ -1,0 +1,17 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table acme_setting_slider'
+    - builder_table_create_acme_setting_slider.php
+1.0.3:
+    - 'Updated table acme_setting_slider'
+    - builder_table_update_acme_setting_slider.php
+1.0.4:
+    - 'Updated table acme_setting_slider'
+    - builder_table_update_acme_setting_slider_2.php
+1.0.5:
+    - 'Created table acme_setting_advantage'
+    - builder_table_create_acme_setting_advantage.php
+1.0.6:
+    - 'Created table acme_setting_faq'
+    - builder_table_create_acme_setting_faq.php

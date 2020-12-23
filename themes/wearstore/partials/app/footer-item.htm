@@ -1,0 +1,11 @@
+description = "Footer menu"
+
+[viewBag]
+==
+<ul class="footer-list">
+  {% for item in items %}
+  <li class="footer-item">
+      <a href="{{ item.url }}" class="footer-link">{{ item.title }}</a>
+  </li>
+  {% endfor %}
+</ul>

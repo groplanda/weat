@@ -1,0 +1,10 @@
+name: Advantages
+form: $/acme/setting/models/advantage/fields.yaml
+modelClass: Acme\Setting\Models\Advantage
+defaultRedirect: acme/setting/advantages
+create:
+    redirect: 'acme/setting/advantages/update/:id'
+    redirectClose: acme/setting/advantages
+update:
+    redirect: acme/setting/advantages
+    redirectClose: acme/setting/advantages

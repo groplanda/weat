@@ -1,0 +1,80 @@
+tabs:
+  defaultTab: Контакты
+  lazy:
+      - Контакты
+      - Общие
+  paneCssClass:
+      0: first-tab
+      1: second-tab
+  icons:
+      Контакты: icon-phone
+      Общие: icon-cogs
+  fields:
+      phone:
+          type: text
+          label: Телефон
+          span: storm
+          cssClass: col-md-4
+          tab: Контакты
+          placeholder: '+79147580525'
+      t_email:
+          type: email
+          label: E-mail
+          span: storm
+          cssClass: col-md-4
+          tab: Контакты
+          placeholder: 'example@mail.ru'
+      address:
+          type: text
+          label: Адрес
+          span: storm
+          cssClass: col-md-4
+          tab: Контакты
+          placeholder: 'г. Волжский'
+      whatsapp:
+          type: text
+          label: WhatsApp
+          span: storm
+          cssClass: col-md-4
+          tab: Контакты
+          placeholder: '79147580525'
+      viber:
+          type: text
+          label: Viber
+          span: storm
+          cssClass: col-md-4
+          tab: Контакты
+          placeholder: '79147580525'
+      vk:
+          type: text
+          label: Вконтакте
+          span: storm
+          cssClass: col-md-4
+          tab: Контакты
+          placeholder: https://vk.com
+      instagram:
+        type: text
+        label: Instagram
+        span: storm
+        cssClass: col-md-4
+        tab: Контакты
+        placeholder: https://www.instagram.com
+      youtube:
+        type: text
+        label: Youtube
+        span: storm
+        cssClass: col-md-4
+        tab: Контакты
+        placeholder: https://www.youtube.com
+      yandex_map:
+        type: textarea
+        label: Код карты
+        span: storm
+        cssClass: col-md-12
+        size: small
+        tab: Контакты
+      site_name:
+        type: text
+        label: Название сайта
+        span: full
+        tab: Общие

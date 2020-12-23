@@ -1,0 +1,31 @@
+description = "Default page"
+==
+<!DOCTYPE html>
+<html>
+    {% partial 'app/meta' %}
+    <body>
+        <!-- Header -->
+        <header class="header">
+            {% partial 'app/header' %}
+        </header>
+        <!-- Content -->
+        <main class="main">
+          <section class="page">
+            <div class="wrapper">
+              <h1 class="title">{{ this.page.title }}</h1>
+              {% page %}
+            </div>
+          </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            {% partial 'app/footer' %}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="{{ 'assets/dist/js/index.js'|theme }}"></script>
+        {% framework extras %}
+        {% scripts %}
+    </body>
+</html>

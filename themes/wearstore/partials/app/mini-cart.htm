@@ -1,0 +1,21 @@
+description = "Mini cart"
+==
+<div class="header__cart">
+  <a id="open-cart" href="#!" class="header__cart-icon">
+      <i class="fas fa-shopping-bag"></i>
+      <span data-count="total">0</span>
+  </a>
+  <div class="shopping-cart" data-cart="mini-cart">
+      <ul class="shopping-cart-items" data-items="product"></ul>
+      <div class="cart-footer">
+          <h6 class="total-text">Сумма: </h6>
+          <div class="total-sum">
+            <span data-sum="total"></span>₽
+          </div>
+      </div>
+      <div class="buttons hide" data-buttons="true">
+          <a href="{{ 'cart'|page }}" class="button cart-button">Корзина</a>
+          <a href="{{ 'checkout'|page }}" class="button cart-button">Заказать</a>
+      </div>
+  </div>
+</div>

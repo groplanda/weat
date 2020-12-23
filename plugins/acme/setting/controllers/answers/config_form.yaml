@@ -1,0 +1,10 @@
+name: Answers
+form: $/acme/setting/models/answer/fields.yaml
+modelClass: Acme\Setting\Models\Answer
+defaultRedirect: acme/setting/answers
+create:
+    redirect: 'acme/setting/answers/update/:id'
+    redirectClose: acme/setting/answers
+update:
+    redirect: acme/setting/answers
+    redirectClose: acme/setting/answers

@@ -1,0 +1,25 @@
+{% set slides = __SELF__.slides %}
+<section id="{{ __SELF__.id }}" class="slider">
+  <div class="swiper-container home-slider">
+      <div class="swiper-wrapper">
+        {% for slide in slides %}
+        {% set image = slide.image.path %}
+        <!-- Slide -->
+        <div class="swiper-slide">
+            <a href="{{ slide.link }}" class="swiper-slide-bg" style="background-image: url('{{ image }}'); background-color: {{ slide.color }};">
+                <div class="swiper-slide-content wrapper">
+                    <h2 class="swiper-slide-title">{{ slide.title }}</h2>
+                    <p class="swiper-slide-description">
+                        {{ slide.description }}
+                    </p>
+                </div>
+            </a>
+        </div>
+        <!-- Slide -->
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="slider-arrow prev"><i class="fas fa-long-arrow-alt-left"></i></div>
+      <div class="slider-arrow next"><i class="fas fa-long-arrow-alt-right"></i></div>
+  </div>
+</section>

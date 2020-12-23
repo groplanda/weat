@@ -1,0 +1,35 @@
+fields:
+    title:
+        label: Имя
+        span: auto
+        type: text
+    status:
+        label: 'Опубликовать?'
+        span: auto
+        type: switch
+    rating:
+        label: Оценка
+        span: auto
+        placeholder: '1 - 5'
+        type: number
+    email:
+        label: E-mail
+        span: auto
+        type: text
+    created_at:
+        label: 'Дата добавления'
+        mode: datetime
+        span: auto
+        type: datepicker
+    product:
+        label: Товар
+        nameFrom: title
+        descriptionFrom: description
+        span: auto
+        readOnly: 1
+        type: relation
+    description:
+        label: 'Текст отзыва'
+        size: ''
+        span: full
+        type: textarea

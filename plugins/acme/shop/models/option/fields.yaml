@@ -1,0 +1,31 @@
+fields:
+    title:
+        label: Название
+        span: auto
+        type: text
+    type:
+        label: Тип
+        options:
+            size: Размер
+            color: Цвет
+        showSearch: true
+        span: auto
+        type: dropdown
+    color:
+        label: Цвет
+        availableColors:
+            - '#000'
+        span: auto
+        trigger:
+            action: show
+            field: type
+            condition: 'value[color]'
+        type: colorpicker
+    description:
+        label: Описание
+        span: auto
+        trigger:
+            action: show
+            field: type
+            condition: 'value[size]'
+        type: text

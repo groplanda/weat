@@ -1,0 +1,8 @@
+options:
+  label: Опции
+  view:
+    list: $/acme/shop/models/option/columns.yaml
+    toolbarButtons: add|remove|create
+  manage:
+    form: $/acme/shop/models/option/fields.yaml
+    recordsPerPage: 10

@@ -1,0 +1,109 @@
+description = "Contact page"
+==
+<!DOCTYPE html>
+<html>
+    {% partial 'app/meta' %}
+    <body>
+        <!-- Header -->
+        <header class="header">
+            {% partial 'app/header' %}
+        </header>
+        <!-- Content -->
+        <main class="main">
+          <section class="page contact">
+            <div class="wrapper">
+              <h1 class="title">{{ this.page.title }}</h1>
+              <div class="contact__wrapper">
+                <!--item start-->
+                <div class="contact__item">
+                  <div class="contact__item-ico">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <div class="contact__item-info">
+                    <a href="tel:{{ this.theme.phone }}">{{ this.theme.phone }}</a>
+                  </div>
+                </div>
+                <!--item end-->
+                <!--item start-->
+                <div class="contact__item">
+                  <div class="contact__item-ico">
+                    <i class="fas fa-store"></i>
+                  </div>
+                  <div class="contact__item-info">
+                    <p>{{ this.theme.address }}</p>
+                  </div>
+                </div>
+                <!--item end-->
+                <!--item start-->
+                <div class="contact__item">
+                  <div class="contact__item-ico">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div class="contact__item-info">
+                    <a href="mailto:{{ this.theme.t_email }}">{{ this.theme.t_email }}</a>
+                  </div>
+                </div>
+                <!--item end-->
+                <!--item start-->
+                <div class="contact__item">
+                  <div class="contact__item-info center">
+                    <p>Мы в соц стеях: </p>
+                  </div>
+                  <ul class="social-list">
+                    {% if this.theme.vk %}
+                    <li class="social-item">
+                        <a rel="nofollow" target="_blank" href="{{ this.theme.vk }}" class="social-link">
+                          <i class="fab fa-vk"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if this.theme.instagram %}
+                    <li class="social-item">
+                        <a rel="nofollow" target="_blank" href="{{ this.theme.instagram }}" title="Instagram" class="social-link">
+                          <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if this.theme.youtube %}
+                    <li class="social-item">
+                        <a rel="nofollow" target="_blank" href="{{ this.theme.youtube }}" title="Youtube" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if this.theme.whatsapp %}
+                    <li class="social-item">
+                        <a href="whatsapp://send?phone=+{{ this.theme.whatsapp }}" title="WhatsApp" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if this.theme.viber %}
+                    <li class="social-item">
+                        <a href="viber://add?number={{ this.theme.viber }}" title="Viber" class="social-link">
+                            <i class="fab fa-viber"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                  </ul>
+                </div>
+                <!--item end-->
+              </div>
+            </div>
+          </section>
+          <section class="map">
+            {{ this.theme.yandex_map|raw }}
+          </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            {% partial 'app/footer' %}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="{{ 'assets/dist/js/index.js'|theme }}"></script>
+        {% framework extras %}
+        {% scripts %}
+    </body>
+</html>

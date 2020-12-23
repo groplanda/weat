@@ -1,0 +1,84 @@
+<div class="checkout">
+  <div class="checkout__form">
+    <h6 class="checkout__title">Заполните поля</h6>
+      <form
+        class="order-form"
+        data-request="onCheckout"
+        data-request-validate
+        data-request-flash
+      >
+        <input type="hidden" name="products" id="product-input" value="">
+        <ul class="checkout__list">
+
+          <li class="checkout__item">
+            <label>*ФИО </label>
+            <input type="text" name="user_name" class="input" value="" placeholder="">
+            <span class="small text-danger" data-validate-for="user_name"></span>
+          </li>
+          <li class="checkout__item">
+            <label>*Телефон </label>
+            <input type="text" name="user_phone" class="input" value="" placeholder="">
+            <span class="small text-danger" data-validate-for="user_phone"></span>
+          </li>
+          <li class="checkout__item">
+            <label>Адрес </label>
+            <input type="text" name="user_address" class="input" value="" placeholder="">
+          </li>
+          <li class="checkout__item">
+            <label>E-mail </label>
+            <input type="text" name="user_email" class="input" value="" placeholder="">
+            <span class="small text-danger" data-validate-for="user_email"></span>
+          </li>
+          <li class="checkout__item full">
+            <label>Комментарий </label>
+            <textarea name="user_comment" class="input"></textarea>
+            <span class="small text-danger" data-validate-for="user_comment"></span>
+          </li>
+
+        </ul>
+        <ul class="checkout__payment">
+          <li class="checkout__payment-item">
+            <input class="checkout__payment-input" type="radio" name="user_payment_method" id="radio1" value="Оплата наличными" checked>
+            <label class="checkout__payment-label" for="radio1">ОПЛАТА НАЛИЧНЫМИ</label>
+            <p class="checkout__payment-description">Оплата наличными при получении товара.</p>
+          </li>
+          <li class="checkout__payment-item">
+            <input class="checkout__payment-input" type="radio" name="user_payment_method" id="radio2" value="Оплата картой">
+            <label class="checkout__payment-label" for="radio2">ОПЛАТА КАРТОЙ</label>
+            <p class="checkout__payment-description">Оплата заказа с помощью банковской карты.</p>
+          </li>
+        </ul>
+        <ul class="checkout__button">
+            <li class="checkout__button-item">
+                <button type="submit" class="button" data-attach-loading data-button="checkout">Сделать заказ</button>
+            </li>
+            <li class="checkout__button-item">
+                <a href="{{ 'cart'|page }}" class="button gradient">В корзину</a>
+            </li>
+        </ul>
+        {% flash %}
+        <div class="alert alert-{{ type }}" data-interval="4">
+            {{ message }}
+        </div>
+        {% endflash %}
+      </form>
+  </div>
+  <div class="checkout__table">
+    <h6 class="checkout__title">Ваш заказ</h6>
+      <table class="table center" data-cart="big-cart">
+        <thead >
+            <tr class="checkout__table-title">
+                <th class="checkout__table-name">Товар</th>
+                <th class="checkout__table-total">Сумма</th>
+            </tr>
+        </thead>
+        <tbody data-items="checkout"></tbody>
+        <tfoot class="checkout__table-footer">
+            <tr data-buttons="true">
+                <th>Итого:</th>
+                <td><strong data-sum="total"></strong>₽</td>
+            </tr>
+        </tfoot>
+      </table>
+  </div>
+</div>
