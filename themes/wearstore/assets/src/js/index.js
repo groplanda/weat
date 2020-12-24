@@ -27,7 +27,9 @@ const openCart = document.getElementById('open-cart'),
         document.querySelector('[data-price="start"]'),
         document.querySelector('[data-price="end"]'),
       ],
-      withUser = screen.width || document.documentElement.clientWidth;
+      withUser = screen.width || document.documentElement.clientWidth,
+      showMore = document.querySelector('[data-click="open"]'),
+      paramsBlock = document.querySelector('[data-product="params"]');
 
 Swiper.use([Navigation, Pagination]);
 
@@ -246,4 +248,19 @@ if (withUser <= 480) {
   if(modalFilter && filterWrap) {
     modalFilter.append(filterWrap);
   }
+}
+
+
+if(showMore && paramsBlock) {
+  showMore.addEventListener('click', e => {
+    e.preventDefault();
+    paramsBlock.classList.toggle('full');
+    if(paramsBlock.classList.contains('full')) {
+      paramsBlock.style.height = paramsBlock.scrollHeight + 'px';
+      showMore.textContent = 'Скрыть описание';
+    } else {
+      paramsBlock.style.height = '220px';
+      showMore.textContent = 'Развернуть описание';
+    }
+  })
 }

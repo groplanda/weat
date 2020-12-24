@@ -3,18 +3,42 @@
   <div class="product__wrapper">
     <!--main image start-->
     <div class="product__image">
-      <div id="zoom-pic" class="product__image-pic" style="background-image: url('{{ image }}')">
-        <img class="product__image-thumb animate__animated" src="{{ image }}" alt="{{ product.title }}">
+      <div class="product__image-inner">
+        <div id="zoom-pic" class="product__image-pic" style="background-image: url('{{ image }}')">
+          <img class="product__image-thumb animate__animated" src="{{ image }}" alt="{{ product.title }}">
+        </div>
+        <!--gallery start-->
+        <ul id="imageFilter" class="product__image-list">
+          {% for image in product.gallery %}
+          <li class="product__image-item {{ loop.first ? ' active' : '' }}"  data-color="{{ image.title|lower }}" data-article="{{ image.description }}">
+            <img class="product__image-item-thumb" src="{{ image.thumb(66, '99', { 'mode':'crop' }) }}" alt="{{ image.title }}" data-image="{{ image.path }}">
+          </li>
+          {% endfor %}
+        </ul>
+        <!--gallery end-->
       </div>
-      <!--gallery start-->
-      <ul id="imageFilter" class="product__image-list">
-        {% for image in product.gallery %}
-        <li class="product__image-item {{ loop.first ? ' active' : '' }}"  data-color="{{ image.title|lower }}" data-article="{{ image.description }}">
-          <img class="product__image-item-thumb" src="{{ image.thumb(66, '99', { 'mode':'crop' }) }}" alt="{{ image.title }}" data-image="{{ image.path }}">
-        </li>
-        {% endfor %}
-      </ul>
-      <!--gallery end-->
+      <!--tabs start-->
+      <div class="product__tabs">
+        <div class="product__tabs-header">
+          <ul class="product__tabs-header-list">
+            <li class="product__tabs-header-item button active" data-tab="comments">
+              <i class="fas fa-comment-dots"></i> Все отзывы
+            </li>
+            <li class="product__tabs-header-item button" data-tab="form">
+              <i class="fas fa-envelope"></i>Оставить отзыв
+            </li>
+          </ul>
+        </div>
+        <div class="product__tabs-body">
+          <div id="comments">
+            {% partial __SELF__ ~ '::comments.htm' comments = product.comments %}
+          </div>
+          <div id="form" style="display: none;">
+            {% partial __SELF__ ~ '::form.htm' %}
+          </div>
+        </div>
+      </div>
+      <!--tabs end-->
     </div>
     <!--main image end-->
 
@@ -32,9 +56,9 @@
         <!--product price start-->
         <p class="product__price">
           {% if product.sale_price %}
-            <span class="product__price-sale">{{ product.price }}</span> {{ product.sale_price }} <span class="product__price-current">₽</span>
+            <span class="product__price-sale">{{ product.price }}</span> {{ product.sale_price }} <span class="product__price-current">₽ за ед.</span>
           {% else %}
-            {{ product.price }} <span class="product__price-current">₽</span>
+            {{ product.price }} <span class="product__price-current">₽ за ед.</span>
           {% endif %}
         </p>
         <!--product price end-->
@@ -49,13 +73,16 @@
 
         <!--product params start-->
         {% if product.info %}
-        <div class="product__params">
-          {% for param in product.info %}
-          <div class="product__param">
-            <span class="product__param-type"><b>{{ param.type }}</b></span>
-            <span class="product__param-value">{{ param.value }}</span>
+        <div class="product__params-wrapper">
+          <div class="product__params" data-product="params">
+            {% for param in product.info %}
+            <div class="product__param">
+              <span class="product__param-type"><b>{{ param.type }}</b></span>
+              <span class="product__param-value">{{ param.value }}</span>
+            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
+          <a href="#!" data-click="open">Развернуть характеристики</a>
         </div>
         <!--product params end-->
         {% endif %}
@@ -138,29 +165,6 @@
       </div>
     </div>
     <!--product info end-->
-  </div>
-
-  <div class="product__wrapper">
-    <div class="product__tabs">
-      <div class="product__tabs-header">
-        <ul class="product__tabs-header-list">
-          <li class="product__tabs-header-item button active" data-tab="comments">
-            <i class="fas fa-comment-dots"></i> Все отзывы
-          </li>
-          <li class="product__tabs-header-item button" data-tab="form">
-            <i class="fas fa-envelope"></i>Оставить отзыв
-          </li>
-        </ul>
-      </div>
-      <div class="product__tabs-body">
-        <div id="comments">
-          {% partial __SELF__ ~ '::comments.htm' comments = product.comments %}
-        </div>
-        <div id="form" style="display: none;">
-          {% partial __SELF__ ~ '::form.htm' %}
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>
