@@ -2420,8 +2420,20 @@ table {
     }
   }
   .slider {
+    .swiper-slide-content {
+      padding: 0 35px;
+    }
+    .slider-arrow {
+      left: 5px;
+      &.next {
+        right: 5px;
+      }
+    }
     .swiper-slide-bg {
       position: relative;
+      background-size: cover;
+      background-position: center;
+      min-height: 350px;
       &::before {
         content: "";
         position: absolute;
@@ -2435,6 +2447,12 @@ table {
     }
     .swiper-slide-title, .swiper-slide-description {
       position: relative;
+    }
+    .swiper-slide-title {
+      font-size: 35px;
+    }
+    .swiper-slide-description {
+      font-size: 20px;
     }
   }
   .advantages {
@@ -2458,6 +2476,13 @@ table {
     }
     &__action {
       width: 100%;
+    }
+    &__form-send {
+      font-size: 0;
+      i {
+        font-size: 20px;
+        margin-right: 0;
+      }
     }
   }
   .confirm__label::before {
@@ -2636,6 +2661,10 @@ table {
     width: 35px;
   }
   .page {
+    .title {
+      font-size: 30px;
+      letter-spacing: 2px;
+    }
     .contact {
       &__item {
         width: 100%;
@@ -2653,6 +2682,15 @@ table {
       position: absolute;
       width: 100%;
       bottom: 0;
+    }
+  }
+  .faq {
+    &__header {
+      padding-right: 60px;
+    }
+    &__header-title {
+      font-size: 20px;
+      width: calc(100% - 45px);
     }
   }
 }
