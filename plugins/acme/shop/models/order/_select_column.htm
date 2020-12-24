@@ -1,13 +1,13 @@
 <?php
-$texts = ['new' => 'Новый', 'work' => 'В работе', 'finish' => 'Выполнен', 'close' => 'Закрыт'];
+$texts = ['new' => 'Новый', 'pay' => 'Оплачен', 'work' => 'В работе', 'finish' => 'Выполнен', 'close' => 'Закрыт'];
 ?>
 <span class='<?= $value ?>'><?= $texts[$value] ?></span>
 <style>
-  .new, .work, .finish, .close {
+  .new, .work, .finish, .close, .pay {
     position: relative;
     padding-left: 15px;
   }
-  .new::before, .work::before, .finish::before, .close::before {
+  .new::before, .work::before, .finish::before, .close::before, .pay::before {
     content: '\2022';
     position: absolute;
     left: 0;
@@ -22,7 +22,10 @@ $texts = ['new' => 'Новый', 'work' => 'В работе', 'finish' => 'Вы�
     color:#007bff;
   }
   .finish::before, .finish {
-    color: #28a745;
+    color: #1f6e32;
+  }
+  .pay::before, .pay {
+    color: #d636ae;
   }
   .close::before, .close {
     color: #6c757d;
