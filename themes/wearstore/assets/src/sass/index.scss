@@ -2117,8 +2117,8 @@ button {
   MESSAGES STYLES CSS START
 */
 .alert-message {
-  position: absolute;
-  bottom: 50px;
+  position: fixed;
+  top: 150px;
   right: 15px;
   transition: all .3s ease;
   .alert {

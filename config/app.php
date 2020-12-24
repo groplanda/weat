@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'debug' => true,
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'url' => 'http://wear.local',
+    'url' => env('APP_URL', 'http://wear.local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +107,7 @@ return [
     |
     */
 
-    'key' => 'di8Kbw1nHxuxMZRv99CvFDojoIy8fnWl',
+    'key' => env('APP_KEY', ''),
 
     'cipher' => 'AES-256-CBC',
 

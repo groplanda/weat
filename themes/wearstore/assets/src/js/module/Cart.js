@@ -59,7 +59,7 @@ const Cart = () => {
         document.body.insertAdjacentHTML('afterbegin', html)
         let alert = document.querySelector('.alert-message');
         setTimeout(() => {
-            alert.style.right = -220 +'px';
+            alert.style.top = 0;
         }, 1500)
         setTimeout(() => {
             alert.remove();

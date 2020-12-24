@@ -14,6 +14,7 @@ class Plugin extends PluginBase
             'Acme\Shop\Components\Featured' => 'Featured',
             'Acme\Shop\Components\Checkout' => 'Checkout',
             'Acme\Shop\Components\categorylist' => 'CategoryList',
+            'Acme\Shop\Components\Notification' => 'Notification',
         ];
     }
 
