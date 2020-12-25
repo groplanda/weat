@@ -8,6 +8,7 @@ import { Tabs } from './module/Tabs';
 import noUiSlider from 'nouislider';
 import wNumb from './module/wNumb.min.js';
 window.$ = window.jQuery = $;
+require("@fancyapps/fancybox");
 
 const openCart = document.getElementById('open-cart'),
       openSearch = document.getElementById('open-search'),
@@ -47,6 +48,11 @@ new Swiper('.home-slider', {
     nextEl: '.slider-arrow.next',
     prevEl: '.slider-arrow.prev',
   },
+});
+
+$('[data-fancybox="gallery"]').fancybox({
+  animationEffect: "fade",
+  transitionEffect: "circular",
 });
 
 new Swiper('.swiper-featured', {

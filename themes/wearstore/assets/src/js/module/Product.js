@@ -114,6 +114,7 @@ const Product = (productSelector) => {
         image.classList.add('hide');
         image.classList.remove('active');
       } else {
+        image.classList.remove('active');
         image.classList.remove('hide');
         gallery.push(image);
       }

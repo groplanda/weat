@@ -6,6 +6,7 @@
 @import './vars.scss';
 @import '~animate.css/animate.min.css';
 @import '~nouislider/distribute/nouislider.css';
+@import '~@fancyapps/fancybox/dist/jquery.fancybox.css';
 /* exo-2-regular - latin_cyrillic */
 @font-face {
   font-family: 'Exo 2';
@@ -431,16 +432,13 @@ button {
   .swiper-slide-bg {
     width: 100%;
     min-height: 720px;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: 70% 50%;
+    background-position: center;
     display: flex;
     align-items: center;
   }
   .swiper-slide:not(.swiper-slide-duplicate):nth-child(odd) {
-    .swiper-slide-bg {
-      background-position: 20% 50%;
-    }
     .swiper-slide-title, .swiper-slide-description {
       margin-left: auto;
       margin-right: 0;
@@ -2249,7 +2247,30 @@ table {
 /*
   MEDIA STYLES CSS START
 */
-@media (min-width: 801px) and (max-width: 1025px) {
+/*
+  GALLERY STYLES CSS START
+*/
+.gallery {
+  margin: 60px 0;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  &__item {
+    display: flex;
+    margin-bottom: 30px;
+    width: calc(25% - 20px);
+  }
+  &__item-thumb {
+    box-shadow: 0 0 8px 6px rgba($primary, .2);
+    border-radius: 4px;
+  }
+}
+/*
+GALLERY STYLES CSS END
+*/
+@media (min-width: 801px) and (max-width: 1201px) {
   .header {
     &__wrapper {
       align-items: center;
@@ -2265,14 +2286,30 @@ table {
     }
   }
   .product {
-    &__image-pic {
+    &__image-pic, &__image-list {
       height: 565px;
     }
     &__title {
       font-size: 35px;
     }
+    &__price-sale {
+      margin-right: 5px;
+    }
+    &__price-current {
+      margin-left: 5px;
+      font-size: 14px;
+    }
     &__size {
       width: 80%;
+    }
+    &__tabs {
+      width: 100%;
+    }
+    &__tabs-header-item {
+      padding: 0 15px;
+      font-size: 16px;
+      font-weight: 400;
+      height: 45px;
     }
   }
   .footer {
@@ -2431,8 +2468,6 @@ table {
     }
     .swiper-slide-bg {
       position: relative;
-      background-size: cover;
-      background-position: center;
       min-height: 350px;
       &::before {
         content: "";
@@ -2578,7 +2613,13 @@ table {
       letter-spacing: 2px;
     }
     &__price {
-      width: 45%;
+      width: 100%;
+    }
+    &__price-sale {
+      margin-right: 5px;
+    }
+    &__price-current {
+      margin-left: 5px;
     }
     &__size {
       width: 100%;
@@ -2691,6 +2732,34 @@ table {
     &__header-title {
       font-size: 20px;
       width: calc(100% - 45px);
+    }
+  }
+  .gallery {
+    margin: 30px 0;
+    &__inner {
+      flex-direction: column;
+    }
+    &__item {
+      margin-bottom: 20px;
+      width: calc(100%);
+    }
+  }
+}
+@media (max-width: 340px) {
+  .product {
+    &__tabs-header-item {
+      font-size: 14px;
+      height: 40px;
+      padding: 0 10px;
+    }
+  }
+  .footer {
+    &__contact {
+      max-width: 100%;
+    }
+    &__social {
+      max-width: 100%;
+      justify-content: center;
     }
   }
 }

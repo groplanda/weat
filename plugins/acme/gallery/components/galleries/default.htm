@@ -1,0 +1,18 @@
+{% set gallery = __SELF__.gallery %}
+<div id="{{ __SELF__.id }}" class="gallery">
+  <h2 class="title">{{ gallery.title }}</h2>
+  <div class="gallery__inner">
+    {% for image in gallery.gallery %}
+    {% set full = image.thumb(800, false) %}
+    {% set poster = image.thumb(340, false, {'mode': 'crop'}) %}
+    <a
+      class="gallery__item"
+      href="{{ full }}"
+      data-fancybox="gallery"
+      data-caption="{{ image.title }}"
+    >
+      <img src="{{ poster }}" alt="{{ image.title }}" class="gallery__item-thumb" />
+    </a>
+    {% endfor %}
+  </div>
+</div>

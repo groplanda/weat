@@ -4,6 +4,10 @@ columns:
         type: text
         searchable: true
         sortable: true
+    gallery:
+        label: Фото
+        type: partial
+        path: ~/plugins/acme/shop/models/product/_image_column.htm
     is_active:
         label: Статус
         type: switch
