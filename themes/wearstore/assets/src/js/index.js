@@ -84,7 +84,7 @@ new Swiper('.swiper-featured', {
   }
 });
 
-removeBtnDisabled('.subscriber__form-send', '.confirm__input');
+removeBtnDisabled('.subscriber__form-send', '#confirm-subscribe');
 removeBtnDisabled('.form .button', '.confirm__input');
 
 function removeBtnDisabled(btnSelector, checkboSelector) {

@@ -9,6 +9,9 @@ featuredTitle = "Популярные товары"
 advantageName = 1
 
 [subscribeform]
+
+[formwidget]
+formType = "second"
 ==
 <!DOCTYPE html>
 <html>
@@ -27,14 +30,7 @@ advantageName = 1
 
             {% component 'advantagewidget' %}
 
-            <section class="about">
-                <div class="wrapper">
-                    <h3 class="about__title">{{ this.page.title }}</h3>
-                    <div class="about__content">
-                        {% page %}
-                    </div>
-                </div>
-            </section>
+            {% component 'formwidget' %}
 
             {% component 'subscribeform' %}
 

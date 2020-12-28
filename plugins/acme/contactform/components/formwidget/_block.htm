@@ -1,28 +1,33 @@
-<form 
-id="{{ __SELF__.id }}"
-data-request="{{ __SELF__ }}::onSend"
-data-request-validate
-data-request-flash
-class="ajax-form rounded shadow">
-    <div class="title w-100">Мы свяжемся с Вами в течение 4 минут</div>
-    <div class="d-flex ajax-form__row">
-        <div class="form-group">
-            <label for="">Имя</label>
-            <input type="text" name="user_name" class="input rounded" placeholder="Ваше имя">
-            <span class="small" data-validate-for="user_name"></span>
-        </div>
-        <div class="form-group">
-            <label for="">Телефон</label>
-            <input type="text" name="user_phone" class="phone__mask input rounded" placeholder="+7(999)-999-999">
-            <span class="small" data-validate-for="user_phone"></span>
-        </div>
-        <div class="form-group">
-            <button id="btn-2" class="theme-btn" disabled="disabled" data-attach-loading>Заказать звонок</button>
-        </div>
-        <div class="checkbox w-100">
-            <input id="confirm2" type="checkbox" name="check" value="confirm">
-            <label for="confirm2">Согласен с <a href="{{ 'privacy'|staticPage }}" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a></label>
-        </div>
+<form
+    id="{{ __SELF__.id }}"
+    data-request="{{ __SELF__ }}::onSend"
+    data-request-validate
+    data-request-flash
+    class="form home-form wrapper">
+    <div class="form__wrapper full">
+        <h3 class="title">Оставьте заявку и мы вам перезвоним.</h3>
+    </div>
+    <div class="form__wrapper">
+        <input type="text" name="user_name" class="form__input" placeholder="Ваше имя*" />
+        <span class="text-danger validate" data-validate-for="user_name"></span>
+    </div>
+    <div class="form__wrapper">
+        <input type="tel" name="user_phone" class="form__input" placeholder="Ваш телефон*" />
+        <span class="text-danger validate" data-validate-for="user_phone"></span>
+    </div>
+    <div class="form__wrapper">
+        <input type="text" name="user_mail" class="form__input" placeholder="Ваш email" />
+        <span class="text-danger validate" data-validate-for="user_mail"></span>
+    </div>
+    <div class="form__wrapper full">
+        <textarea name="user_message"class="form__input huge" placeholder="Ваше сообщение"></textarea>
+    </div>
+    <div class="subscriber__form-row confirm form__wrapper full">
+        <input type="checkbox" name="confirm-form" id="confirm-form" class="confirm__input">
+        <label for="confirm-form" class="confirm__label">Согласен с <a href="{{ 'privacy'|staticPage }}" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a></label>
+    </div>
+    <div class="form__wrapper full">
+        <button type="submit" disabled="disabled" class="button" data-attach-loading>Отправить</button>
     </div>
     {% flash %}
     <div class="alert alert-{{ type }}" data-interval="4">
