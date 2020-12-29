@@ -48,10 +48,15 @@ tabs:
             span: auto
             type: text
             tab: Клиент
+        user_delivery_method:
+            label: Доставка
+            span: auto
+            type: text
+            tab: Клиент
         user_comment:
             label: Сообщение
             size: small
-            span: auto
+            span: full
             type: textarea
             tab: Клиент
         products:

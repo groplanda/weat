@@ -802,6 +802,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 20px;
   }
   &__paylist-item {
     width: calc(50% - 15px);
@@ -1962,6 +1963,23 @@ button {
       }
     }
   }
+  &__delivery {
+    margin: 20px 0;
+    &-item {
+      padding: 20px 10px;
+      position: relative;
+      background: $grey;
+      border-radius: 6px;
+      box-shadow: 0 3px 6px rgba($primary, 0.15);
+      margin-bottom: 10px;
+      p {
+        font-size: 15px;
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+  }
   .select2-container {
     width: 100% !important;
     margin-bottom: 15px;
@@ -2564,6 +2582,12 @@ GALLERY STYLES CSS END
       a, span {
         font-size: 16px;
       }
+    }
+    &__title {
+      font-size: 14px;
+    }
+    .footer-link {
+      font-size: 11px;
     }
   }
   .social-list {

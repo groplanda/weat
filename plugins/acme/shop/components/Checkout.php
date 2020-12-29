@@ -67,6 +67,7 @@ class Checkout extends ComponentBase {
         'user_address' => Input::get('user_address'),
         'user_comment' => Input::get('user_comment'),
         'user_payment_method' => Input::get('user_payment_method'),
+        'user_delivery_method' => Input::get('user_delivery_method'),
         'products' => $allProducts,
         'order'=> 'Заказ - '.$time,
         'order_id' => '',
@@ -74,6 +75,12 @@ class Checkout extends ComponentBase {
       ];
       $items = $this->createProductArray($vars['products']);
       $sum = $this->getSumProducts($vars['products']);
+
+      if($vars['user_delivery_method'] !== 'самовывоз' && (int)$vars['user_delivery_method'] > 0) {
+        $delivery_sum = (int)$vars['user_delivery_method'];
+        $sum += $delivery_sum;
+        array_push($items, $this->createDelivery($delivery_sum));
+      }
 
       Mail::send('acme.shop::mail.message', $vars, function($message) {
         $message->to($this->getUserMail(), 'Admin Person');
@@ -164,6 +171,20 @@ class Checkout extends ComponentBase {
     $this->page['regions'] = $regions;
   }
 
+  private function createDelivery($sum) {
+    return [
+      'description' => 'Доставка CDEK',
+      'quantity' => '1',
+      'vat_code' => '2',
+      'amount' => [
+        'value' => $sum.'.00',
+        'currency' => 'RUB'
+      ],
+      'payment_mode' => 'full_prepayment',
+      'payment_subject' => 'commodity',
+    ];
+  }
+
   private function createProductArray($products)
   {
     $result = [];
@@ -209,6 +230,7 @@ class Checkout extends ComponentBase {
     $order->user_address = $data['user_address'];
     $order->user_comment = $data['user_comment'];
     $order->user_payment_method = $data['user_payment_method'];
+    $order->user_delivery_method = $data['user_delivery_method'];
     $order->products = $data['products'];
     if(isset($u_id) && !empty($u_id)) {
       $order->order_id = $u_id;

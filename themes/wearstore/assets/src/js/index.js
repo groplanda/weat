@@ -32,7 +32,11 @@ const openCart = document.getElementById('open-cart'),
       ],
       withUser = screen.width || document.documentElement.clientWidth,
       showMore = document.querySelector('[data-click="open"]'),
-      paramsBlock = document.querySelector('[data-product="params"]');
+      paramsBlock = document.querySelector('[data-product="params"]'),
+      deliverySum = document.getElementById('delivery'),
+      deliveryRadio =  document.querySelectorAll('[name="user_delivery_method"]'),
+      cdekForm = document.getElementById('cdek'),
+      orderBtn = document.querySelector('[data-button="checkout"]');
 
 Swiper.use([Navigation, Pagination]);
 
@@ -137,20 +141,15 @@ if(questions) {
 
 //Jquery
 $('.products').on('click', '.pagination > ul > li > a.click-page', productFilter);
-
-
 if(searchQuery) {
   document.querySelector('h1.title').append(searchQuery);
 }
-
 if(colorFilter) {
   colorFilter.addEventListener('click', e =>  openNextDropdown(e, colorFilter));
 }
-
 if(sizeFilter) {
   sizeFilter.addEventListener('click', e =>  openNextDropdown(e, sizeFilter));
 }
-
 if(sortFilter) {
   sortFilter.addEventListener('click', e =>  openNextDropdown(e, sortFilter));
   sortRadio.forEach(radio => {
@@ -159,7 +158,6 @@ if(sortFilter) {
     })
   })
 }
-
 function createRange() {
   const maxPrice = sortPrice.dataset.max,
   minPrice = sortPrice.dataset.min;
@@ -176,50 +174,39 @@ function createRange() {
     thousand: '',
   })
 });
-
-
 sortPrice.noUiSlider.on('update', function (values, handle) {
 sortValues[handle].innerHTML = values[handle];
 });
 }
-
 if(sortPrice) {
   createRange();
 }
 if(colorCheckboxes && sizeCheckboxes && btnFilter && sortRadio) {
   btnFilter.addEventListener('click', productFilter);
 }
-
 function productFilter(e) {
   e.preventDefault();
-
   let page = document.querySelector('.click-page.active');
   page ? page = page.dataset.page : 1;
   if(e.target && e.target.classList.contains('click-page')) {
     page = e.target.dataset.page;
   }
-
   let colors = [];
   let sizes = [];
   let sort = 'sort_order asc';
   let min = sortValues[0].textContent;
   let max = sortValues[1].textContent;
-
   sortRadio.forEach(radio => {
     radio.checked ? sort = radio.value : '';
   })
-
   colorCheckboxes.forEach(color => {
     color.checked ? colors.push(color.value) : '';
   })
-
   sizeCheckboxes.forEach(size => {
     size.checked ? sizes.push(size.value) : '';
   })
-
   const products = document.querySelector('.products__wrapper'),
         filters = document.querySelectorAll('.products__filter-selectbox-title');
-
   $.request('onFilterProduct', {
     beforeUpdate() {
       products.classList.add('loading');
@@ -247,11 +234,9 @@ function productFilter(e) {
     }, 500)
   });
 }
-
 $('.theme__form').on('ajaxSuccess', function(event) {
   event.currentTarget.reset();
 });
-
 if (withUser <= 480) {
   const modalFilter = document.getElementById('modal-filter'),
         filterWrap =  document.getElementById('partialFilter');
@@ -260,8 +245,6 @@ if (withUser <= 480) {
     modalFilter.append(filterWrap);
   }
 }
-
-
 if(showMore && paramsBlock) {
   showMore.addEventListener('click', e => {
     e.preventDefault();
@@ -275,8 +258,22 @@ if(showMore && paramsBlock) {
     }
   })
 }
-const cdekForm = document.getElementById('cdek');
-
+if(deliveryRadio) {
+  deliveryRadio.forEach(radio => {
+    radio.addEventListener('change', function() {
+      if(radio.value === 'самовывоз') {
+        cdekForm.classList.add('hide');
+      } else {
+        cdekForm.classList.remove('hide');
+      }
+      if(radio.value === '0') {
+        orderBtn.setAttribute('disabled', true);
+      } else {
+        orderBtn.removeAttribute('disabled');
+      }
+    })
+  })
+}
 $('[name="regions"]').on('select2:select', e => {
   const code = e.params.data.id;
   if(code.length > 0) {
@@ -296,7 +293,6 @@ $('[name="regions"]').on('select2:select', e => {
     })
   }
 })
-
 if(cdekForm) {
   cdekForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -316,24 +312,43 @@ if(cdekForm) {
                   "height":"0.3"
               }
           ],
-      "services": [
-          {
-              "id": "7"
-          }
-      ]
     }
     if(town && town.length > 0) {
-      fetch('https://api.cdek.ru/calculator/calculate_price_by_json.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
+      $.ajax({
+        url : 'http://api.cdek.ru/calculator/calculate_price_by_jsonp.php',
+        jsonp : 'callback',
+        data : {
+          "json" : JSON.stringify(query)
         },
-        body: JSON.stringify(query)
-      })
-      .then(response => {
-        console.log(response);
+        type : 'GET',
+        dataType : "jsonp",
+        success : function(data) {
+            let response = document.querySelector('[data-type="delivery"]');
+            response.innerHTML = '';
+
+            let list = document.createElement('ul');
+            list.classList.add('checkout__delivery-list');
+
+            let li = document.createElement('li');
+            li.classList.add('checkout__delivery-item');
+
+            if(data.hasOwnProperty("result")) {
+            li.innerHTML = `<p><span>Цена доставки: </span>${data.result.price}</p>
+                            <p><span>Срок доставки: </span>${data.result.deliveryPeriodMin} - ${data.result.deliveryPeriodMax} дн</p>
+                            <p><span>Планируемая дата доставки: </span>${data.result.deliveryDateMin} - ${data.result.deliveryDateMax}</p>`;
+
+            deliverySum.value = data.result.price;
+            orderBtn.removeAttribute('disabled');
+          } else {
+            for(var key in data["error"]) {
+              li.innerHTML = `<p><span>${data["error"][key].text}</span></p>`;
+            }
+            orderBtn.setAttribute('disabled', true);
+          }
+          list.append(li);
+          response.append(list);
+        }
       })
     }
-
   })
 }

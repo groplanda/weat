@@ -36,18 +36,37 @@
           </li>
 
         </ul>
+
+        <h4 class="title">Выберите тип оплаты</h4>
+
         <ul class="checkout__payment">
           <li class="checkout__payment-item">
-            <input class="checkout__payment-input" type="radio" name="user_payment_method" id="radio1" value="Оплата наличными" checked>
-            <label class="checkout__payment-label" for="radio1">ОПЛАТА НАЛИЧНЫМИ</label>
+            <input class="checkout__payment-input" type="radio" name="user_payment_method" id="cash" value="Оплата наличными" checked>
+            <label class="checkout__payment-label" for="cash">ОПЛАТА НАЛИЧНЫМИ</label>
             <p class="checkout__payment-description">Оплата наличными при получении товара.</p>
           </li>
           <li class="checkout__payment-item">
-            <input class="checkout__payment-input" type="radio" name="user_payment_method" id="radio2" value="online">
-            <label class="checkout__payment-label" for="radio2">ОНЛАЙН-ОПЛАТА</label>
+            <input class="checkout__payment-input" type="radio" name="user_payment_method" id="online" value="online">
+            <label class="checkout__payment-label" for="online">ОНЛАЙН-ОПЛАТА</label>
             <p class="checkout__payment-description">Оплата заказа с помощью Yandex. Вы будете перенаправлены на страницу оплаты.</p>
           </li>
         </ul>
+
+        <h4 class="title">Выберите тип доставки</h4>
+
+        <ul class="checkout__payment">
+          <li class="checkout__payment-item">
+            <input class="checkout__payment-input" type="radio" name="user_delivery_method" id="pickup" value="самовывоз" checked>
+            <label class="checkout__payment-label" for="pickup">САМОВЫВОЗ</label>
+            <p class="checkout__payment-description">Вы забираете свой товар самостоятельно.</p>
+          </li>
+          <li class="checkout__payment-item">
+            <input class="checkout__payment-input" type="radio" name="user_delivery_method" id="delivery" value="0">
+            <label class="checkout__payment-label" for="delivery">CDEK</label>
+            <p class="checkout__payment-description">Доставка компанией CDEK согласно ее тарифам.</p>
+          </li>
+        </ul>
+
         <ul class="checkout__button">
             <li class="checkout__button-item">
                 <button type="submit" class="button" data-attach-loading data-button="checkout">Сделать заказ</button>
@@ -81,7 +100,8 @@
       </tfoot>
     </table>
 
-    <form id="cdek">
+    <form id="cdek" class="hide">
+      <h4 class="title">Укажите ваш регион и город</h4>
       <select name="regions" class="select-region" name="regions">
         <option value="">Выберите</option>
         {% for region in regions|sort %}
@@ -93,7 +113,7 @@
       </div>
       <button type="submit" class="button hide">Расчитать</button>
     </form>
-
+    <div class="checkout__delivery" data-type="delivery"></div>
 
 </div>
 </div>

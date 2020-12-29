@@ -141,3 +141,6 @@
 1.0.48:
     - 'Updated table acme_shop_orders'
     - builder_table_update_acme_shop_orders_4.php
+1.0.49:
+    - 'Updated table acme_shop_orders'
+    - builder_table_update_acme_shop_orders_5.php
