@@ -323,7 +323,7 @@ if(cdekForm) {
       ]
     }
     if(town && town.length > 0) {
-      fetch('http://api.cdek.ru/calculator/calculate_price_by_json.php', {
+      fetch('https://api.cdek.ru/calculator/calculate_price_by_json.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
