@@ -315,7 +315,7 @@ if(cdekForm) {
     }
     if(town && town.length > 0) {
       $.ajax({
-        url : 'http://api.cdek.ru/calculator/calculate_price_by_jsonp.php',
+        url : 'https://api.cdek.ru/calculator/calculate_price_by_jsonp.php',
         jsonp : 'callback',
         data : {
           "json" : JSON.stringify(query)
