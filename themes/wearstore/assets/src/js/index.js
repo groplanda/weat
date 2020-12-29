@@ -7,8 +7,10 @@ import Cart from './module/Cart';
 import { Tabs } from './module/Tabs';
 import noUiSlider from 'nouislider';
 import wNumb from './module/wNumb.min.js';
+
 window.$ = window.jQuery = $;
 require("@fancyapps/fancybox");
+require("select2/dist/js/select2.min.js");
 
 const openCart = document.getElementById('open-cart'),
       openSearch = document.getElementById('open-search'),
@@ -38,6 +40,9 @@ Product('.product');
 Modals();
 Cart();
 Tabs('.product__tabs-header-item');
+
+$('.select-region').select2();
+$('.select-town').select2();
 
 new Swiper('.home-slider', {
   loop: true,
@@ -268,5 +273,41 @@ if(showMore && paramsBlock) {
       paramsBlock.style.height = '220px';
       showMore.textContent = 'Развернуть описание';
     }
+  })
+}
+const cdekForm = document.getElementById('cdek');
+
+$('[name="regions"]').on('select2:select', e => {
+  const code = e.params.data.id;
+  if(code.length > 0) {
+    $.request('onFilterTowns', {
+      beforeUpdate() {
+      },
+      data: {
+          'code': code,
+      },
+      update: {
+        '@towns.htm' : '#partialForm',
+      },
+    })
+    .done(() => {
+      $('.select-town').select2();
+      document.querySelector('#cdek .button').classList.remove('hide');
+    })
+  }
+})
+
+if(cdekForm) {
+  cdekForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const town = this.town.value;
+
+    if(town && town.length > 0) {
+      fetch(`https://kit.cdek-calc.ru/api/?weight=0.5&width=50&length=40&height=3&from=427&to=${town}&contract=2&pay_to=1&tariffs=1,136&insurance=1000&cost=0`)
+      .then(response => {
+        console.log(response);
+      })
+    }
+
   })
 }

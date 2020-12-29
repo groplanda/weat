@@ -11,6 +11,9 @@ use Acme\Shop\Models\Product;
 use Backend\Models\User;
 use YooKassa\Client;
 
+use CdekSDK\CdekClient;
+use CdekSDK\Requests;
+
 class Checkout extends ComponentBase {
 
   public function componentDetails()
@@ -29,7 +32,7 @@ class Checkout extends ComponentBase {
 
   public function onRun()
   {
-
+    $this->prepareVars();
   }
 
   public function onCheckout()
@@ -117,7 +120,52 @@ class Checkout extends ComponentBase {
     }
   }
 
-  private function createProductArray($products) {
+  public function onFilterTowns() {
+    $this->prepareVars();
+  }
+
+  public function prepareVars()
+  {
+    $code = post('code', null);
+
+    $client = new CdekClient();
+
+    $regRequest = new Requests\RegionsRequest();
+    $regRequest->setCountryCode('RU');
+
+    $regResponse = $client->sendRegionsRequest($regRequest);
+
+    $regions = [];
+    $towns = [];
+
+    foreach($regResponse as $region) {
+      array_push($regions, [
+        'title' => $region->getName(),
+        'id' => $region->getCode(),
+        'code' => $region->getCodeExt(),
+      ]);
+    }
+
+    if($code !== null) {
+      $townsRequest = new Requests\CitiesRequest();
+      $townsRequest->setPage(0)->setRegionCode($code);
+      $townsResponse = $client->sendCitiesRequest($townsRequest);
+      foreach($townsResponse as $town) {
+        array_push($towns, [
+          'title' => $town->getCityName(),
+          'id' => $town->getCityCode(),
+          'limit' => $town->getPaymentLimit(),
+          'kladr' => $town->getKladr(),
+        ]);
+      }
+    }
+
+    $this->page['towns'] = $towns;
+    $this->page['regions'] = $regions;
+  }
+
+  private function createProductArray($products)
+  {
     $result = [];
     foreach($products as $product) {
       $result[] = [
@@ -135,7 +183,8 @@ class Checkout extends ComponentBase {
     return $result;
   }
 
-  private function getSumProducts($products) {
+  private function getSumProducts($products)
+  {
     $sum = 0;
     foreach($products as $product) {
       $sum+= $product->price * $product->count;
@@ -148,7 +197,8 @@ class Checkout extends ComponentBase {
     return trim(str_replace('/storage/app/media', '', stripcslashes($string)), '"');
   }
 
-  private function insertData($data, $u_id) {
+  private function insertData($data, $u_id)
+  {
     $order = new Order;
     $order->name = $data['order'];
     $order->ip = $data['ip'];

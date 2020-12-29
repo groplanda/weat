@@ -7,6 +7,7 @@
 @import '~animate.css/animate.min.css';
 @import '~nouislider/distribute/nouislider.css';
 @import '~@fancyapps/fancybox/dist/jquery.fancybox.css';
+@import '~select2/dist/css/select2.min.css';
 /* exo-2-regular - latin_cyrillic */
 @font-face {
   font-family: 'Exo 2';
@@ -1960,6 +1961,10 @@ button {
         color: #fff;
       }
     }
+  }
+  .select2-container {
+    width: 100% !important;
+    margin-bottom: 15px;
   }
 }
 /*

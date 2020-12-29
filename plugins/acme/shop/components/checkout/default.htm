@@ -80,5 +80,20 @@
           </tr>
       </tfoot>
     </table>
+
+    <form id="cdek">
+      <select name="regions" class="select-region" name="regions">
+        <option value="">Выберите</option>
+        {% for region in regions|sort %}
+          <option value="{{ region.id }}">{{ region.title }}</option>
+        {% endfor %}
+      </select>
+      <div id="partialForm" class="form">
+        {% partial "Checkout::towns" %}
+      </div>
+      <button type="submit" class="button hide">Расчитать</button>
+    </form>
+
+
 </div>
 </div>

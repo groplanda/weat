@@ -12,11 +12,15 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
-        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
@@ -27,6 +31,7 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
         '7e5c472b6b448232930b8605a4c5e95c' => __DIR__ . '/..' . '/october/rain/src/Router/helpers.php',
         '97af4f586841c1bd9dd1f8710561ecaa' => __DIR__ . '/..' . '/october/rain/src/Html/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'de0aa6f7ee0c8e5d0c93ac8ecaf08e3e' => __DIR__ . '/..' . '/sanmai/pipeline/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -92,8 +97,10 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
             'Psy\\' => 4,
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
+            'Pipeline\\' => 9,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
         ),
@@ -101,11 +108,11 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
         array (
             'Opis\\Closure\\' => 13,
             'October\\Rain\\' => 13,
-            'October\\Demo\\' => 13,
         ),
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Metadata\\' => 9,
         ),
         'L' => 
         array (
@@ -114,9 +121,19 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
             'League\\CommonMark\\' => 18,
             'Laravel\\Tinker\\' => 15,
         ),
+        'J' => 
+        array (
+            'JMS\\Serializer\\' => 15,
+        ),
         'I' => 
         array (
             'Illuminate\\' => 11,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
         'F' => 
         array (
@@ -134,6 +151,7 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
             'Doctrine\\DBAL\\' => 14,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
             'DMS\\PHPUnitExtensions\\ArraySubset\\' => 34,
@@ -143,6 +161,7 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
             'Cron\\' => 5,
             'Composer\\Installers\\' => 20,
             'Cms\\' => 4,
+            'CdekSDK\\' => 8,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -314,6 +333,10 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
@@ -321,6 +344,10 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
+        'Pipeline\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sanmai/pipeline/src',
         ),
         'PhpParser\\' => 
         array (
@@ -338,13 +365,13 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
         array (
             0 => __DIR__ . '/..' . '/october/rain/src',
         ),
-        'October\\Demo\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/plugins/october/demo',
-        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Metadata\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jms/metadata/src',
         ),
         'League\\Flysystem\\' => 
         array (
@@ -362,9 +389,25 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'JMS\\Serializer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jms/serializer/src',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
         'Faker\\' => 
         array (
@@ -398,6 +441,10 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
         array (
             0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
         ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
         'Doctrine\\Common\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
@@ -421,6 +468,11 @@ class ComposerStaticInitce290a037d2cbd6fc6b8d537449d0ac2
         'Cms\\' => 
         array (
             0 => __DIR__ . '/../..' . '/modules/cms',
+        ),
+        'CdekSDK\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sanmai/cdek-sdk/src',
+            1 => __DIR__ . '/..' . '/sanmai/cdek-sdk-serializer/src',
         ),
         'Carbon\\' => 
         array (

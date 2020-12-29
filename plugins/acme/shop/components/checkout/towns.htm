@@ -1,0 +1,7 @@
+{% if towns|length > 0 %}
+<select class="select-town" name="town">
+  {% for town in towns|sort %}
+    <option value="{{ town.id }}">{{ town.title }}</option>
+  {% endfor %}
+</select>
+{% endif %}
