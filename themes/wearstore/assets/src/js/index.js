@@ -302,8 +302,34 @@ if(cdekForm) {
     e.preventDefault();
     const town = this.town.value;
 
+    const query = {
+      "version":"1.0",
+      "senderCityId":"427",
+      "receiverCityId": town,
+      "tariffId":"1",
+      "goods":
+          [
+              {
+                  "weight":"0.5",
+                  "length":"50",
+                  "width":"40",
+                  "height":"0.3"
+              }
+          ],
+      "services": [
+          {
+              "id": "7"
+          }
+      ]
+    }
     if(town && town.length > 0) {
-      fetch(`https://kit.cdek-calc.ru/api/?weight=0.5&width=50&length=40&height=3&from=427&to=${town}&contract=2&pay_to=1&tariffs=1,136&insurance=1000&cost=0`)
+      fetch('http://api.cdek.ru/calculator/calculate_price_by_json.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(query)
+      })
       .then(response => {
         console.log(response);
       })
