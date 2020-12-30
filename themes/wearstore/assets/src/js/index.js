@@ -258,7 +258,7 @@ if(showMore && paramsBlock) {
     }
   })
 }
-if(deliveryRadio) {
+if(deliveryRadio && cdekForm) {
   cdekForm.classList.remove('hide');
   deliveryRadio.forEach(radio => {
     orderBtn.setAttribute('disabled', true);
