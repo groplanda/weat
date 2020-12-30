@@ -16,15 +16,15 @@ mix.js('./themes/wearstore/assets/src/js/index.js', 'dist/js')
   .sass('./themes/wearstore/assets/src/sass/index.scss', 'dist/css')
   .options({
     processCssUrls: false,
-    autoprefixer: {
-      options: {
-          browsers: [
-              'last 6 versions',
-          ]
-      }
-    }
   })
   .copyDirectory('./node_modules/@fortawesome/fontawesome-free/webfonts', './themes/wearstore/assets/dist/webfonts')
+  .options({
+    postCss: [
+    require('autoprefixer')({
+        overrideBrowserslist: ['last 6 versions'],
+            grid: true,
+        })
+  ]})
   .browserSync({
     proxy: 'wear.local',
     host: 'wear.local',
