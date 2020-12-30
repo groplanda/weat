@@ -259,7 +259,9 @@ if(showMore && paramsBlock) {
   })
 }
 if(deliveryRadio) {
+  cdekForm.classList.remove('hide');
   deliveryRadio.forEach(radio => {
+    orderBtn.setAttribute('disabled', true);
     radio.addEventListener('change', function() {
       if(radio.value === 'самовывоз') {
         cdekForm.classList.add('hide');

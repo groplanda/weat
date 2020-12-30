@@ -8,16 +8,6 @@
 @import '~nouislider/distribute/nouislider.css';
 @import '~@fancyapps/fancybox/dist/jquery.fancybox.css';
 @import '~select2/dist/css/select2.min.css';
-/* konkord-retro - latin_cyrillic */
-@font-face {
-  font-family: 'Konkord Retro';
-  font-style: normal;
-  font-weight: 400;
-  src: local(''),
-       url('/themes/wearstore/assets/fonts/konkord-retro.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/themes/wearstore/assets/fonts/konkord-retro.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-       url('/themes/wearstore/assets/fonts/konkord-retro.ttf')  format('truetype'),
-}
 /* exo-2-regular - latin_cyrillic */
 @font-face {
   font-family: 'Exo 2';
@@ -26,6 +16,15 @@
   src: local(''),
        url('/themes/wearstore/assets/fonts/exo-2-v9-latin_cyrillic-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('/themes/wearstore/assets/fonts/exo-2-v9-latin_cyrillic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* exo-2-500 - latin_cyrillic */
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''),
+       url('/themes/wearstore/assets/fonts/exo-2-v9-latin_cyrillic-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/themes/wearstore/assets/fonts/exo-2-v9-latin_cyrillic-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 html {
   box-sizing: border-box;
@@ -59,6 +58,9 @@ input, textarea {
     font-family: 'Exo 2';
   }
 }
+h1, h2, h3, h4, h5, h6, b, strong, .title {
+  font-weight: 500;
+}
 .hide {
   display: none !important;
 }
@@ -84,9 +86,6 @@ input, textarea {
 img {
   max-width: 100%;
   height: auto;
-}
-h1, h2, h3, h4, h5, h6, b, strong, .title {
-  font-family: 'Konkord Retro';
 }
 button {
   outline: none;
@@ -1248,6 +1247,7 @@ button {
     overflow: hidden;
     background-position: 50% 50%;
     background-repeat: no-repeat;
+    background-size: 200%;
     cursor: zoom-in;
     &:hover {
       .product__image-thumb {
@@ -1330,7 +1330,6 @@ button {
     p {
       text-align: justify;
       font-size: 18px;
-      font-style: italic;
     }
   }
   &__params {
@@ -1957,6 +1956,9 @@ button {
     font-size: 40px;
     letter-spacing: 3px;
     margin-bottom: 30px;
+  }
+  p {
+    font-size: 18px;
   }
 }
 .faq {
