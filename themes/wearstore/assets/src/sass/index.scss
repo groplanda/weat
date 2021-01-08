@@ -397,6 +397,52 @@ button {
   &:last-child {
     margin-right: 0;
   }
+  &.has-child {
+    position: relative;
+    > .nav-link {
+      &::after {
+        content: "\f0da";
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        line-height: 19px;
+        display: inline-block;
+        margin-left: 5px;
+        transform: rotate(0);
+        transition: transform .3s ease;
+      }
+      &.open {
+        &::after {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    padding: 10px 20px;
+    box-shadow: 0 4px 4px rgba($primary, .2);
+    border-radius: 0 0 3px 3px;
+    background: $primary-bg;
+    min-width: 200px;
+    white-space: nowrap;
+    transform: translateY(-50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s linear, transform .5s linear;
+    &.show {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0%);
+    }
+    .nav-item {
+      margin: 10px 0;
+    }
+    .nav-link {
+      font-size: 14px;
+    }
+  }
 }
 .nav-link {
   color: $primary;

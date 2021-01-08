@@ -26,36 +26,51 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: Блуза
-        nesting: null
+        title: Каталог
         type: url
-        url: /category/bluzka
+        url: '#!'
         code: ''
-        reference: null
-        cmsPage: null
-        replace: null
         viewBag:
             isHidden: '0'
             cssClass: ''
             isExternal: '0'
-    -
-        title: Платье
-        nesting: null
-        type: url
-        url: /category/plate
-        code: ''
-        reference: null
-        cmsPage: null
-        replace: null
-        viewBag:
-            isHidden: '0'
-            cssClass: ''
-            isExternal: '0'
+        items:
+            -
+                title: Блуза
+                type: url
+                url: /category/bluzka
+                code: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Платье
+                type: url
+                url: /category/plate
+                code: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Топ
+                type: url
+                url: /category/top
+                code: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
     -
         title: Контакты
+        nesting: null
         type: cms-page
+        url: null
         code: ''
         reference: contact
+        cmsPage: null
+        replace: null
         viewBag:
             isHidden: '0'
             cssClass: ''

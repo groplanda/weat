@@ -4,8 +4,17 @@ description = "Menu items"
 ==
 <ul class="nav-list" data-menu="header">
   {% for item in items %}
-  <li class="nav-item">
-      <a href="{{ item.url }}" class="nav-link{{ item.isActive or item.isChildActive ? ' active' : '' }}">{{ item.title }}</a>
+  <li class="nav-item{{ item.items ? ' has-child' : '' }}">
+      <a href="{{ item.url }}" class="nav-link{{ item.isActive or item.isChildActive ? ' active' : '' }}" {{ item.items ? ' data-menu="toggle"' : '' }}>{{ item.title }}</a>
+      {% if item.items %}
+    <ul class="dropdown-menu">
+      {% for subitem in item.items %}
+      <li class="nav-item">
+        <a href="{{ subitem.url }}" class="nav-link">{{ subitem.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+      {% endif %}
   </li>
   {% endfor %}
 </ul>

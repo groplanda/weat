@@ -36,7 +36,8 @@ const openCart = document.getElementById('open-cart'),
       deliverySum = document.getElementById('delivery'),
       deliveryRadio =  document.querySelectorAll('[name="user_delivery_method"]'),
       cdekForm = document.getElementById('cdek'),
-      orderBtn = document.querySelector('[data-button="checkout"]');
+      orderBtn = document.querySelector('[data-button="checkout"]'),
+      parentMenu = document.querySelectorAll('[data-menu="toggle"]');
 
 Swiper.use([Navigation, Pagination]);
 
@@ -92,6 +93,15 @@ new Swiper('.swiper-featured', {
     }
   }
 });
+
+parentMenu.forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const dropdown = item.nextElementSibling;
+    dropdown.classList.toggle('show');
+    item.classList.toggle('open');
+  })
+})
 
 removeBtnDisabled('.subscriber__form-send', '#confirm-subscribe');
 removeBtnDisabled('.form .button', '.confirm__input');
@@ -239,11 +249,18 @@ $('.theme__form').on('ajaxSuccess', function(event) {
 });
 if (withUser <= 480) {
   const modalFilter = document.getElementById('modal-filter'),
-        filterWrap =  document.getElementById('partialFilter');
+        filterWrap =  document.getElementById('partialFilter'),
+        productImage = document.querySelector('.product__image-inner'),
+        mobileImgBlock = document.getElementById('mobile-image-block');
 
   if(modalFilter && filterWrap) {
     modalFilter.append(filterWrap);
   }
+
+  if(productImage && mobileImgBlock) {
+    mobileImgBlock.appendChild(productImage);
+  }
+
 }
 if(showMore && paramsBlock) {
   showMore.addEventListener('click', e => {
