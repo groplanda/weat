@@ -256,8 +256,7 @@ if (withUser <= 480) {
   if(modalFilter && filterWrap) {
     modalFilter.append(filterWrap);
   }
-
-  if(productImage && mobileImgBlock) {
+  if(productImage && mobileImgBlock ) {
     mobileImgBlock.appendChild(productImage);
   }
 

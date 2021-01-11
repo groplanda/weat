@@ -2686,13 +2686,25 @@ GALLERY STYLES CSS END
       height: 40px;
       padding: 0 15px;
     }
+    &__params-wrapper {
+      a[data-click="open"] {
+        display: none;
+      }
+    }
+    &__params {
+      overflow: auto;
+      height: auto;
+      &::after  {
+        display: none;
+      }
+    }
     &__param-type {
       width: 40%;
-      font-size: 14px;
+      font-size: 13px;
     }
     &__param-value {
       width: calc(60% - 20px);
-      font-size: 14px;
+      font-size: 13px;
     }
   }
   .table__scroll {
