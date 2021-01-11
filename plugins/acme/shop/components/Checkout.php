@@ -76,7 +76,7 @@ class Checkout extends ComponentBase {
       $items = $this->createProductArray($vars['products']);
       $sum = $this->getSumProducts($vars['products']);
 
-      if($vars['user_delivery_method'] !== 'самовывоз' && (int)$vars['user_delivery_method'] > 0) {
+      if(($vars['user_delivery_method'] !== 'доставка курьером' || $vars['user_delivery_method'] !== 'до пункта выдачи') && (int)$vars['user_delivery_method'] > 0) {
         $delivery_sum = (int)$vars['user_delivery_method'];
         $sum += $delivery_sum;
         array_push($items, $this->createDelivery($delivery_sum));

@@ -50,11 +50,24 @@
         <h4 class="title">Выберите тип доставки</h4>
 
         <ul class="checkout__payment">
-          <li class="checkout__payment-item">
-            <input class="checkout__payment-input" type="radio" name="user_delivery_method" id="delivery" value="0" checked>
+          <!--<li class="checkout__payment-item">
+            <input class="checkout__payment-input" type="radio" name="user_delivery_method" id="delivery" value="0">
             <label class="checkout__payment-label" for="delivery">CDEK</label>
             <p class="checkout__payment-description">Доставка компанией CDEK согласно ее тарифам.</p>
+          </li>-->
+
+          <li class="checkout__payment-item">
+            <input class="checkout__payment-input" type="radio" name="user_delivery_method" id="courier" checked value="доставка курьером">
+            <label class="checkout__payment-label" for="courier">Доставка Курьером</label>
+            <p class="checkout__payment-description">Курьерская доставка.</p>
           </li>
+
+          <li class="checkout__payment-item">
+            <input class="checkout__payment-input" type="radio" name="user_delivery_method" id="point" value="до пункта выдачи">
+            <label class="checkout__payment-label" for="point">До пункта выдачи</label>
+            <p class="checkout__payment-description">Доставка до пункта выдачи товара.</p>
+          </li>
+
         </ul>
 
         <ul class="checkout__button">
@@ -90,7 +103,7 @@
       </tfoot>
     </table>
 
-    <form id="cdek" class="hide">
+    <!--<form id="cdek" class="hide">
       <h4 class="title">Укажите ваш регион и город</h4>
       <select name="regions" class="select-region" name="regions">
         <option value="">Выберите</option>
@@ -103,7 +116,7 @@
       </div>
       <button type="submit" class="button hide">Расчитать</button>
     </form>
-    <div class="checkout__delivery" data-type="delivery"></div>
+    <div class="checkout__delivery" data-type="delivery"></div>-->
 
 </div>
 </div>
