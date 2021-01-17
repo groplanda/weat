@@ -64,6 +64,10 @@ h1, h2, h3, h4, h5, h6, .title {
 b, strong {
   font-weight: 700;
 }
+mark {
+  background: none;
+  color: inherit;
+}
 .oc-text-uppercase {
   text-transform: uppercase;
 }
