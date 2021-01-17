@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="products__info">
-            <h5 class="products__info-title">{{ result.title }}</h5>
+            <h5 class="products__info-title">{{ result.title|raw }}</h5>
             <p class="products__price">
                 {% if result.model.sale_price %}
                   <span class="products__price-sale">{{ result.model.price }}</span> | {{ result.model.sale_price }} <span class="producst__price-current">₽</span>

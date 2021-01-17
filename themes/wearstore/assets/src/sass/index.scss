@@ -58,8 +58,14 @@ input, textarea {
     font-family: 'Exo 2';
   }
 }
-h1, h2, h3, h4, h5, h6, b, strong, .title {
+h1, h2, h3, h4, h5, h6, .title {
   font-weight: 500;
+}
+b, strong {
+  font-weight: 700;
+}
+.oc-text-uppercase {
+  text-transform: uppercase;
 }
 .hide {
   display: none !important;
@@ -470,6 +476,7 @@ button {
     background-position: center;
     display: flex;
     align-items: center;
+    text-align: center;
   }
   .swiper-slide:not(.swiper-slide-duplicate):nth-child(odd) {
     .swiper-slide-title, .swiper-slide-description {
@@ -479,17 +486,15 @@ button {
   }
   .swiper-slide-title {
     text-transform: uppercase;
-    color: $primary;
+    color: $bedge;
     font-size: 50px;
     letter-spacing: 3px;
     margin-bottom: 30px;
-    max-width: 550px;
   }
   .swiper-slide-description {
-    color: $secondary;
-    font-size: 24px;
+    color: $bedge;
+    font-size: 30px;
     text-transform: uppercase;
-    max-width: 550px;
   }
   .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
     width: 15px;
@@ -1357,7 +1362,8 @@ button {
     align-items: center;
     margin-right: 15px;
     &-current {
-      font-size: 18px;
+      margin-left: 3px;
+      font-size: 20px;
       color: $primary;
     }
   }

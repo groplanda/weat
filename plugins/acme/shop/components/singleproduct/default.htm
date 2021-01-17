@@ -57,9 +57,9 @@
         <!--product price start-->
         <p class="product__price">
           {% if product.sale_price %}
-            <span class="product__price-sale">{{ product.price }}</span> {{ product.sale_price }} <span class="product__price-current">₽ за ед.</span>
+            <span class="product__price-sale">{{ product.price }}</span> {{ product.sale_price }} <span class="product__price-current">РУБ</span>
           {% else %}
-            {{ product.price }} <span class="product__price-current">₽ за ед.</span>
+            {{ product.price }} <span class="product__price-current">РУБ</span>
           {% endif %}
         </p>
         <!--product price end-->
