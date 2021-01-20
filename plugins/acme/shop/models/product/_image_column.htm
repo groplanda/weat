@@ -1,3 +1,8 @@
-<?php if (isset($value[0])): ?>
-  <img src="<?php echo $value[0]->path; ?>" alt="" class="w-100" />
+<?php
+  use ToughDeveloper\ImageResizer\Classes\Image;
+  if (isset($value[0])):
+  $image = new Image($value[0]->path);
+  $image->resize(100, 135, [ 'mode' => 'crop', 'quality' => '70' ]);
+?>
+  <img src="<?=$image ?>" alt="" class="w-100" />
 <?php endif; ?>
