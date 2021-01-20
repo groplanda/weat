@@ -27,11 +27,14 @@
                                         class="featured__product-thumb"
                                         alt="{{ product.title }}"
                                     />
-                                    <ul class="featured__product-tags">
-                                        <li class="featured__product-single-tag sale">
-                                            -{{  100 - ((product.sale_price / product.price ) * 100) |round }}%
-                                        </li>
-                                    </ul>
+                                    <div class="products__item-badge">
+                                        {% if product.sale_price %}
+                                        <span class="products__item-sale" title="Скидка">-{{  100 - ((product.sale_price / product.price ) * 100) |round }}%</span>
+                                        {% endif %}
+                                        {% if product.is_featured %}
+                                            <span class="products__item-featured" title="Популярный"><i class="fas fa-star"></i></span>
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 <div class="featured__product-info">
                                     {% if product.sale_price %}
