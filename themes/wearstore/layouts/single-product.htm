@@ -1,4 +1,7 @@
 description = "Product page"
+
+[formwidget]
+formType = "third"
 ==
 <!DOCTYPE html>
 <html>
@@ -21,6 +24,22 @@ description = "Product page"
         <footer class="footer">
             {% partial 'app/footer' %}
         </footer>
+
+        <div class="popup animate__animated bulk-popup">
+          <div class="popup-dialog">
+            <div class="popup-window">
+              <div class="popup-window__header">
+                <h4 class="popup-window__header-title">Оставить заявку</h4>
+                <button class="popup-window__header-close">&times;</button>
+              </div>
+              <div class="popup-window__body">
+                <div class="scroll-mobile-y">
+                  {% component 'formwidget' %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Scripts -->
         <script src="{{ 'assets/dist/js/index.js'|theme }}"></script>

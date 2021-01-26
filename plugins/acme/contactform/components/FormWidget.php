@@ -78,6 +78,7 @@ class FormWidget extends ComponentBase
         'user_phone' => Input::get('user_phone'),
         'user_mail' => Input::get('user_mail'),
         'user_message' => Input::get('user_message'),
+        'user_town' => Input::get('user_town'),
       ];
 
       //вставка в базу данных
@@ -86,6 +87,7 @@ class FormWidget extends ComponentBase
       $query->user_phone = Input::get('user_phone');
       $query->user_mail = Input::get('user_mail');
       $query->user_message = Input::get('user_message');
+      $query->user_town = Input::get('user_town');
       $query->user_ip = $_SERVER["REMOTE_ADDR"];
       $query->user_status = 1;
       $query->created_at = time();

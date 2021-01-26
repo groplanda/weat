@@ -16,11 +16,10 @@ fields:
         span: auto
         readOnly: 1
         type: text
-    user_message:
-        label: Сообщение
-        size: large
-        span: full
-        type: textarea
+    user_town:
+        label: Город
+        span: auto
+        type: text
     user_status:
         label: Статус
         options:
@@ -30,6 +29,11 @@ fields:
         showSearch: true
         span: auto
         type: dropdown
+    user_message:
+        label: Сообщение
+        size: large
+        span: full
+        type: textarea
     created_at:
         label: Добавлен
         span: auto

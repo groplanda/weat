@@ -6,3 +6,6 @@
 1.0.3:
     - 'Created table acme_contactform_subscribe'
     - builder_table_create_acme_contactform_subscribe.php
+1.0.4:
+    - 'Updated table acme_contactform_order'
+    - builder_table_update_acme_contactform_order.php

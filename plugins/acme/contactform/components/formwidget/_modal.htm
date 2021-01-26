@@ -3,23 +3,38 @@
     data-request="{{ __SELF__ }}::onSend"
     data-request-validate
     data-request-flash
-    class="ajax-form"
+    class="ajax-form form-modal form"
 >
-    <div class="row-input">
-        <input type="text" name="user_name" class="input center" placeholder="Ваше имя" />
+    <div class="attention">
+        <img src="{{ 'assets/images/icon/warning.svg'|theme }}" alt="attention" class="attention__ico" />
+        <strong>
+            Внимание! Мы не работаем с интернет-магазинами, организаторами совместных закупок и физ. лицами!
+        </strong>
+    </div>
+    <div class="form-modal__row">
+        <input type="text" name="user_name" class="form__input" placeholder="Ваше имя*" />
         <span class="text-danger animate__animated" data-validate-for="user_name"></span>
     </div>
-    <div class="row-input">
-        <input type="tel" name="user_phone" class="input center" placeholder="Ваше телефон" />
+    <div class="form-modal__row">
+        <input type="text" name="user_phone" class="form__input" placeholder="Ваш телефон*" />
         <span class="text-danger animate__animated" data-validate-for="user_phone"></span>
     </div>
-    <div class="privacy">
-        <label for="privacy-policy-consultation-modal"><input type="checkbox" id="privacy-policy-consultation-modal">
-        <span>Согласен с <a href="/policy" target="_blank">политикой конфиденциальности</a></span>
-        </label>
+    <div class="form-modal__row">
+        <input type="text" name="user_mail" class="form__input" placeholder="Ваш email" />
+        <span class="text-danger animate__animated" data-validate-for="user_mail"></span>
     </div>
-    <div class="row-input">
-        <button type="submit" disabled="disabled" class="button violet" data-attach-loading>Отправить</button>
+    <div class="form-modal__row">
+        <input type="text" name="user_town" class="form__input" placeholder="Город" />
+    </div>
+    <div class="form-modal__row">
+        <input type="text" name="user_message" class="form__input" placeholder="Наименование организации" />
+    </div>
+    <div class="subscriber__form-row confirm form__wrapper">
+        <input type="checkbox" name="confirm-subscribe" id="confirm-subscribe" class="confirm__input">
+        <label for="confirm-subscribe" class="confirm__label">Согласен с <a href="{{ 'privacy'|staticPage }}" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a></label>
+    </div>
+    <div class="form-modal__row">
+        <button type="submit" disabled="disabled" class="button" data-attach-loading>Запросить оптовые цены</button>
     </div>
     {% flash %}
     <div class="alert alert-{{ type }}" data-interval="4">

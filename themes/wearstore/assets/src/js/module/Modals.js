@@ -96,6 +96,7 @@ const Modals = () => {
     }
     bindModal('.show-size', '.size-popup', '.size-popup .popup-window__header-close');
     bindModal('[data-modal="filter"]', '.filter-popup', '.filter-popup .popup-window__header-close');
+    bindModal('[data-modal="bulk"]', '.bulk-popup', '.bulk-popup .popup-window__header-close');
 }
 
 export default Modals;
