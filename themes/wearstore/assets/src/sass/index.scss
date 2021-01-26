@@ -2036,6 +2036,17 @@ button {
     font-size: 20px;
     margin-bottom: 10px;
   }
+  .advantages {
+    background: transparent;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    &__title {
+      text-align: center;
+    }
+    &__item-title {
+      font-size: 17px;
+    }
+  }
 }
 .works {
   padding-top: 50px;
