@@ -7,10 +7,12 @@
           {% for row in rows %}
           <!--item start-->
           <div class="advantages__item center">
+              {% if row.ico %}
               <div class="advantages__item-pic">
                   <img src="{{ row.ico|media|resize(75, 75, { quality: '100' }) }}" class="advantages__item-thumb" alt="{{ row.name }}" />
               </div>
-              <h5 class="advantages__item-title">{{ row.name }}</h5>
+              {% endif %}
+              <h5 class="advantages__item-title">{{ row.name|raw }}</h5>
               <p class="advantages__item-description">
                 {{ row.description|raw }}
               </p>
